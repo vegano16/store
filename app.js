@@ -9,10 +9,23 @@ const {
     validationResult
 } = require('express-validator');
 const passport = require('passport');
+const MongoClient = require('mongodb').MongoClient;
 
 //Require and configure DOTENV
 require('dotenv').config();
 
+
+/*MongoClient.connect(
+    "mongodb://" + config.mongo.user + ":" + encodeURIComponent(mongoPassword) + "@" +
+    config.mongo.hostString,
+    function (err, db) {
+        if (!err) {
+            res.end("We are connected to MongoDB");
+        } else {
+            res.end("Error while connecting to MongoDB");
+        }
+    }
+);*/
 mongoose.connect(process.env.MY_MONGODB, {
     useNewUrlParser: true,
     useUnifiedTopology: true
