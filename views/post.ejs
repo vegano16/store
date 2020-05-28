@@ -1,0 +1,104 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Snappi</title>
+    <meta name="description" content="Online market">
+    <meta name="author" content="Me">
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+
+    <link type="text/css" rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="assets/css/home.min.css">
+
+
+    <!--<link type="text/css" rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="/bower_components/fontawesome/css/all.css">-->
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/styles.css">
+
+</head>
+
+<body class="container-fluid">
+
+
+    <%- include('partials/header') -%>
+
+    <div class="row nav_and_content justify-content-around">
+
+        <form method="post" action="/products/post" id="productPostForm" class="col-10 col-sm-8 col-md-10 col-lg-8">
+
+            <h1 class="col-12 text-center">Create Product</h1>
+            <h6 class="col-12 text-center">Complete the form below to create a product.</h6><br>
+
+            <%- messages('message_template', locals) %>
+            <% if(errors){ %>
+            <div>
+                <p class="row alert alert-danger"><%=errors[0].msg %></p>
+            </div>
+            <%}%>
+
+                <div class="row form-group justify-content-center">
+                    <select name="category" class="form-control form-control-sm col-12 col-md-5 col-lg-5">
+                        <option value="<%=data.category%>" selected><%=data.category || "Category"%></option>
+            <option value="groceries">Groceries</option>
+            <option value="meals">Meals</option>
+            <option value="electronics">Electronics</option>
+            <option value="deliveries">Deliveries</option>
+            </select>
+
+            <select name="subcategory" class="form-control form-control-sm col-12 col-md-5 col-lg-5">
+                <option value="<%=data.subcategory%>" selected><%=data.subcategory || "Subcategory"%></option>
+                <option value="groceries">Groceries</option>
+                <option value="meals">Meals</option>
+                <option value="electronics">Electronics</option>
+                <option value="deliveries">Deliveries</option>
+            </select>
+    </div>
+    <div class="row form-group justify-content-center">
+
+        <input type="text" name="name" placeholder="Name" class="form-control form-control-sm col-12 col-md-5 col-lg-5" value="<%=data.name%>">
+
+        <input type="text" name="model" placeholder="Model" class="form-control form-control-sm col-12 col-md-5 col-lg-5" value="<%=data.model%>">
+
+    </div>
+
+    <div class="row form-group justify-content-center">
+
+        <input type="text" name="from" placeholder="Name of agency" class="form-control form-control-sm col-12 col-md-5 col-lg-5" value="<%=data.from || ""%>">
+
+        <input type="text" name="price" placeholder="Price" class="form-control form-control-sm col-12 col-md-5 col-lg-5" value="<%=data.price%>">
+    </div>
+
+    <div class="row form-group justify-content-center">
+
+        <input type="text" name="color" placeholder="Color" class="form-control form-control-sm col-12 col-md-5 col-lg-5" value="<%=data.color%>">
+
+        <input type="text" name="size" placeholder="size" class="form-control form-control-sm col-12 col-md-5 col-lg-5" value="<%=data.size%>">
+    </div>
+
+    <div class="row form-group justify-content-center">
+
+        <input type="text" name="quality" placeholder="quality" class="form-control form-control-sm col-12 col-md-5 col-lg-5" value="<%=data.quality%>">
+    </div>
+
+    <div class="row form-group justify-content-center">
+
+        <pre><textarea name="description" placeholder="Product description" class="form-control form-control-sm col-12 col-md-5 col-lg-5" value="<%=data.description%>"></textarea></pre>
+    </div>
+
+
+    <div class="row form-group justify-content-center">
+        <input type="submit" value="Post Product" class="btn btn-success btn-lg col-12 col-md-5 col-lg-5">
+    </div>
+    </form>
+    </div>
+
+</body>
+
+</html>

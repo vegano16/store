@@ -1,0 +1,79 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Snappi</title>
+    <meta name="description" content="Online market">
+    <meta name="author" content="Me">
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+
+    <link type="text/css" rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="assets/css/home.min.css">
+
+    <!-- <link type="text/css" rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="/bower_components/fontawesome/css/all.css">-->
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="css/styles.css?v=1.0">
+
+</head>
+
+<body class="container-fluid">
+
+
+    <%- include('partials/header') -%>
+
+    <div class="row nav_and_content justify-content-around">
+
+        <%- include('partials/nav-template') -%>
+
+
+        <div class="col-12 col-lg-9 page_content">
+
+            <small><%= products.length%> results found.</small><br>
+
+            <small><%=user%></small>
+
+
+            <%if(products.length < 1){%>
+
+            <h5 class="text-center">No search result for "<%= key%>"</h5>
+
+            <%}else{%>
+
+            <div class="productlist">
+
+                <% products.forEach(function (product) { %>
+                <div class=""><a href="/products/details/<%=product._id%>"><%=product%></a>
+                    <hr>
+                    <div class="row justify-content-center">
+                        <%if(user && user.accessLevel=="client"){%>
+                        <a href="/products/update/<%=product._id%>" class="btn btn-default"><i class="fas fa-pen"></i></a>
+                        <a href="#" class="btn btn-danger delete-product" data-id="<%=product._id%>"><i class="fas fa-trash-alt"></i></a>
+                        <%}%>
+                <a href="#" class="btn btn-success"><i class="fas fa-heart"></i></a>
+                <a href="#" class="btn btn-warning"><i class="fas fa-cart-plus"></i></a>
+
+            </div>
+        </div>
+        <% }) %>
+                    </div>
+                    <%}%>
+                    
+                </div>
+            </div>
+
+            <%- include('partials/footer') -%>
+
+                    <script src="/bower_components/jquery/dist/jquery.js"></script>
+                    <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+                    <script src="/js/script.js"></script>
+                    <script src="/js/del.js"></script>
+</body>
+
+</html>

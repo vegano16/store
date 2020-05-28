@@ -1,0 +1,38 @@
+<hr>
+<footer>
+
+
+    <div class="partners">
+        <h5>OUR PARTNER COMPANIES</h5>
+    </div>
+
+
+    <form class="searchForm">
+        <input type="text" name="searchKey" autocomplete="off" placeholder="Enter search item" class="form-control">
+        <button class="btn btn-default"><i class="fas fa-search"></i></button>
+    </form>
+
+    <div class="authDiv">
+        <ul>
+            <%if(user){%>
+            <a href="/products/post">
+                <button class="btn btn-warning" style="color: #fff;">Make Post</button>
+            </a>
+            <a href="/users/logout">
+                <button class="btn btn-danger" style="color: #fff;">Log Out</button>
+            </a>
+            <%}else{%>
+            <a href="/users/register">
+                <button class="btn btn-primary" style="color: #fff;">Register</button>
+            </a>
+            <a href="/users/login">
+                <button class="btn btn-success" style="color: #fff;">Log In</button>
+            </a>
+            <%}%>
+          </ul>
+      </div>
+      <div class="col-sm-12 text-center">
+        <small>&copy; copyright Snappi 2020</small>
+      </div>
+
+</footer>
