@@ -19,7 +19,7 @@ const MongoClient = require('mongodb').MongoClient;
 
 const config = {
     "mongo": {
-        "hostString": "mongodb:27017/db_name",
+        "hostString": "mongodb:27017/6422836edfc86ed0b9721b3516acd94d",
         "user": "6422836edfc86ed0b9721b3516acd94d",
         "db": "6422836edfc86ed0b9721b3516acd94d"
     }
@@ -88,12 +88,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 //Express session middleware
 // app.set('trust proxy', 1) // trust first proxy
 app.use(session({
-    secret: 'keyboard cat',
+    secret: 'hjvsjkavsjkxavjshv',
     resave: false,
     saveUninitialized: true,
-     cookie: {
-         secure: true
-     }
+    cookie: {
+        secure: true
+    }
 }))
 app.use(flash());
 //Express-messages
