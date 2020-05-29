@@ -9,24 +9,38 @@ const {
     validationResult
 } = require('express-validator');
 const passport = require('passport');
-const MongoClient = require('mongodb').MongoClient;
 
 //Require and configure DOTENV
 require('dotenv').config();
 
+var mongoPassword = 'node20';
+/*var config = JSON.parse(process.env.APP_CONFIG);*/
+const MongoClient = require('mongodb').MongoClient;
 
-/*MongoClient.connect(
+const config = {
+    "mongo": {
+        "hostString": "mongodb:27017/db_name",
+        "user": "6422836edfc86ed0b9721b3516acd94d",
+        "db": "6422836edfc86ed0b9721b3516acd94d"
+    }
+}
+
+
+MongoClient.connect(
     "mongodb://" + config.mongo.user + ":" + encodeURIComponent(mongoPassword) + "@" +
-    config.mongo.hostString,
+    config.mongo.hostString, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    },
     function (err, db) {
         if (!err) {
-            res.end("We are connected to MongoDB");
+            console.log("We are connected to MongoDB");
         } else {
-            res.end("Error while connecting to MongoDB");
+            console.log("Error while connecting to MongoDB");
         }
     }
-);*/
-mongoose.connect(process.env.MY_MONGODB, {
+);
+/*mongoose.connect(process.env.MY_MONGODB, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
@@ -37,7 +51,7 @@ db.once('open', function () {
 })
 db.on('error', function (err) {
     console.log(err);
-})
+})*/
 /*Multer Settings*/
 const multer = require('multer');
 /*const storage = multer.memoryStorage();*/
