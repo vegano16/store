@@ -14,7 +14,7 @@ const passport = require('passport');
 //Require and configure DOTENV
 require('dotenv').config();
 
-mongoose.connect("mongodb+srv://enroutedb:mlab2020@enroute-84wi0.mongodb.net/store", {
+mongoose.connect("mongodb+srv://enroutedb:mlab2020@enroute-84wi0.mongodb.net/Store", {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
@@ -72,9 +72,9 @@ app.use(session({
     secret: 'hjvsjkavsjkxavjshv',
     saveUninitialized: true,
     resave: false
-    /*store: new MongoStore({
-        url: "mongodb+srv://enroutedb:mlab2020@enroute-84wi0.mongodb.net/store"
-    })*/
+    store: new MongoStore({
+        url: "mongodb+srv://enroutedb:mlab2020@enroute-84wi0.mongodb.net/Store"
+    })
 }))
 app.use(flash());
 //Express-messages
