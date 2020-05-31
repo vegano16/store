@@ -4,6 +4,7 @@ const cookieParser = require('cookie-parser');
 const path = require('path');
 const mongoose = require('mongoose');
 const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
 const flash = require('connect-flash');
 const {
     check,
@@ -51,11 +52,6 @@ let Product = require('./models/product');
 
 app.set('view engine', 'ejs');
 
-app.use(cookieParser({
-    secret: "hjsaljkabfkawk930480",
-    maxAge: 60 * 60 * 24 * 7 // 1 week
-}));
-
 // create application/json parser
 let jsonParser = bodyParser.json()
 // create application/x-www-form-urlencoded parser
@@ -76,7 +72,10 @@ app.use(session({
     },
     secret: 'hjvsjkavsjkxavjshv',
     saveUninitialized: true,
-    resave: false
+    resave: false,
+    store: new MongoStore({
+        url: "mongodb+srv://enroutedb:mlab2020@enroute-84wi0.mongodb.net/Store"
+    })
 }))
 app.use(flash());
 //Express-messages
