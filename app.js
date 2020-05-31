@@ -14,7 +14,7 @@ const passport = require('passport');
 //Require and configure DOTENV
 require('dotenv').config();
 
-/*mongoose.connect("mongodb+srv://enroutedb:mlab2020@enroute-84wi0.mongodb.net/Store" || process.env.MY_DB, {
+mongoose.connect("mongodb+srv://enroutedb:mlab2020@enroute-84wi0.mongodb.net/Store" || process.env.MY_DB, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
@@ -25,7 +25,7 @@ db.once('open', function () {
 })
 db.on('error', function (err) {
     console.log(err);
-})*/
+})
 /*Multer Settings*/
 const multer = require('multer');
 /*const storage = multer.memoryStorage();*/
