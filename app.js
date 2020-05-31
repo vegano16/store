@@ -45,7 +45,7 @@ var upload = multer({
 //Initialize server(App)
 const app = express()
 
-app.set("port", (process.env.PORT || 3000));
+app.set('port', (process.env.PORT || 3000));
 
 let Product = require('./models/product');
 
@@ -141,6 +141,6 @@ app.use(function (req, res, next) {
     });
 })*/
 
-app.listen(app.port, function (req, res) {
+app.listen(app.get('port'), function (req, res) {
     console.log(`Server running on port ${process.env.PORT}`);
 })
