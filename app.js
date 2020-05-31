@@ -71,10 +71,10 @@ app.use(session({
     },
     secret: 'hjvsjkavsjkxavjshv',
     saveUninitialized: true,
-    resave: false,
-    store: new MongoStore({
+    resave: false
+    /*store: new MongoStore({
         url: "mongodb+srv://enroutedb:mlab2020@enroute-84wi0.mongodb.net/store"
-    })
+    })*/
 }))
 app.use(flash());
 //Express-messages
