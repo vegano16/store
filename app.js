@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 const path = require('path');
 const mongoose = require('mongoose');
 const session = require('express-session');
@@ -13,34 +14,7 @@ const passport = require('passport');
 //Require and configure DOTENV
 require('dotenv').config();
 
-var mongoPassword = 'node20';
-/*var config = JSON.parse(process.env.APP_CONFIG);*/
-const MongoClient = require('mongodb').MongoClient;
-
-const config = {
-    "mongo": {
-        "hostString": "mongodb:27017/6422836edfc86ed0b9721b3516acd94d",
-        "user": "6422836edfc86ed0b9721b3516acd94d",
-        "db": "6422836edfc86ed0b9721b3516acd94d"
-    }
-}
-
-
-MongoClient.connect(
-    "mongodb://" + config.mongo.user + ":" + encodeURIComponent(mongoPassword) + "@" +
-    config.mongo.hostString, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true
-    },
-    function (err, db) {
-        if (!err) {
-            console.log("We are connected to MongoDB");
-        } else {
-            console.log("Error while connecting to MongoDB");
-        }
-    }
-);
-/*mongoose.connect(process.env.MY_MONGODB, {
+mongoose.connect("mongodb+srv://enroutedb:mlab2020@enroute-84wi0.mongodb.net/Store" || process.env.MY_DB, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
@@ -51,7 +25,7 @@ db.once('open', function () {
 })
 db.on('error', function (err) {
     console.log(err);
-})*/
+})
 /*Multer Settings*/
 const multer = require('multer');
 /*const storage = multer.memoryStorage();*/
@@ -67,12 +41,20 @@ var upload = multer({
     storage: storage
 });
 
+
 //Initialize server(App)
 const app = express()
 
+app.set("port", (process.env.PORT || 3000));
+
 let Product = require('./models/product');
 
-app.set('view engine', 'ejs')
+app.set('view engine', 'ejs');
+
+app.use(cookieParser({
+    secret: "hjsaljkabfkawk930480",
+    maxAge: 60 * 60 * 24 * 7 // 1 week
+}));
 
 // create application/json parser
 let jsonParser = bodyParser.json()
@@ -86,11 +68,11 @@ let urlencodedParser = bodyParser.urlencoded({
 app.use(express.static(path.join(__dirname, 'public')));
 
 //Express session middleware
-// app.set('trust proxy', 1) // trust first proxy
+app.set('trust proxy', 1) // trust first proxy
 app.use(session({
     secret: 'hjvsjkavsjkxavjshv',
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
     cookie: {
         secure: true
     }
@@ -153,6 +135,6 @@ app.use(function (req, res, ) {
     });
 })*/
 
-app.listen(process.env.PORT, function (req, res) {
+app.listen(app.port, function (req, res) {
     console.log(`Server running on port ${process.env.PORT}`);
 })

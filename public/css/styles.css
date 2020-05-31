@@ -4,7 +4,7 @@
     grid-gap: auto;
 }
 
-@media (min-width: 576px) {
+@media screen and (min-width: 576px) {
     .productlist {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -14,7 +14,7 @@
 }
 
 
-@media (min-width: 768px) {
+@media screen and (min-width: 768px) {
     .head-user {
         order: 1
     }
@@ -35,7 +35,7 @@
 }
 
 
-@media (min-width: 992px) {
+@media screen and (min-width: 992px) {
     .productlist {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
@@ -52,6 +52,6 @@
 }
 
 
-@media (min-width: 1200px) {
+@media screen and (min-width: 1200px) {
     ...
 }
