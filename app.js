@@ -142,5 +142,5 @@ app.use(function (req, res, next) {
 })*/
 
 app.listen(app.get('port'), function (req, res) {
-    console.log(`Server running on port ${process.env.PORT}`);
+    console.log(`Server running on port`, app.get('port'));
 })
