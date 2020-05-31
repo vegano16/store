@@ -14,7 +14,7 @@ const passport = require('passport');
 //Require and configure DOTENV
 require('dotenv').config();
 
-mongoose.connect("mongodb+srv://enroutedb:mlab2020@enroute-84wi0.mongodb.net/Store" || process.env.MY_DB, {
+mongoose.connect("mongodb+srv://enroutedb:mlab2020@enroute-84wi0.mongodb.net/Store", {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
