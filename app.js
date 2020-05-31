@@ -1,6 +1,5 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-/*const cookieParser = require('cookie-parser');*/
 const path = require('path');
 const mongoose = require('mongoose');
 const session = require('express-session');
@@ -15,7 +14,7 @@ const passport = require('passport');
 //Require and configure DOTENV
 require('dotenv').config();
 
-mongoose.connect("mongodb+srv://enroutedb:mlab2020@enroute-84wi0.mongodb.net/Store", {
+mongoose.connect("mongodb+srv://enroutedb:mlab2020@enroute-84wi0.mongodb.net/store", {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
@@ -74,7 +73,7 @@ app.use(session({
     saveUninitialized: true,
     resave: false,
     store: new MongoStore({
-        url: "mongodb+srv://enroutedb:mlab2020@enroute-84wi0.mongodb.net/Store"
+        url: "mongodb+srv://enroutedb:mlab2020@enroute-84wi0.mongodb.net/store"
     })
 }))
 app.use(flash());
