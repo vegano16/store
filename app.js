@@ -70,12 +70,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 //Express session middleware
 app.set('trust proxy', 1) // trust first proxy
 app.use(session({
-    secret: 'hjvsjkavsjkxavjshv',
-    resave: false,
-    saveUninitialized: false,
     cookie: {
-        secure: true
-    }
+        secure: true,
+        maxAge: 60000
+    },
+    secret: 'hjvsjkavsjkxavjshv',
+    saveUninitialized: true,
+    resave: false
 }))
 app.use(flash());
 //Express-messages
@@ -125,7 +126,14 @@ app.use(function (req, res, ) {
     res.status(404).render('404', {
         nav: ""
     });
-})
+});
+
+app.use(function (req, res, next) {
+    if (!req.session) {
+        return next(new Error('Oh no')) //handle error
+    }
+    next() //otherwise continue
+});
 
 /*app.use(function (error, req, res, next) {
     res.status(500).render('500', {
