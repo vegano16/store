@@ -101,7 +101,7 @@ app.use(function (req, res, next) {
 app.get('/', function (req, res) {
     Product.find({}, function (err, products) {
         if (err) {
-            console.log(err);
+            console.log("No product found");
         } else {
             /*console.log(products);*/
             res.render('index', {
