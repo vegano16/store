@@ -71,7 +71,7 @@ app.use(session({
     },
     secret: 'hjvsjkavsjkxavjshv',
     saveUninitialized: true,
-    resave: false
+    resave: false,
     store: new MongoStore({
         url: "mongodb+srv://enroutedb:mlab2020@enroute-84wi0.mongodb.net/Store"
     })
