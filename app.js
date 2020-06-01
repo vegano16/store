@@ -73,7 +73,7 @@ app.use(session({
         maxAge: 60000
     },
     secret: 'hjvsjkavsjkxavjshv',
-    saveUninitialized: false,
+    saveUninitialized: true,
     resave: false,
     store: new MongoStore({
         url: "mongodb+srv://enroutedb:mlab2020@enroute-84wi0.mongodb.net/Store"
