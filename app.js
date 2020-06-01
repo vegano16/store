@@ -14,6 +14,9 @@ const passport = require('passport');
 //Require and configure DOTENV
 require('dotenv').config();
 
+/*
+let dbUrl = "mongodb+srv://enroutedb:mlab2020@enroute-84wi0.mongodb.net/Store" || "mongodb://localhost/store";*/
+
 mongoose.connect("mongodb+srv://enroutedb:mlab2020@enroute-84wi0.mongodb.net/Store", {
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -43,7 +46,7 @@ var upload = multer({
 
 
 //Initialize server(App)
-const app = express()
+const app = express();
 
 app.set('port', (process.env.PORT || 3000));
 
@@ -58,7 +61,7 @@ let urlencodedParser = bodyParser.urlencoded({
     extended: false
 })
 
-// app.use(express.json());
+/* app.use(express.json());*/
 
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -70,8 +73,8 @@ app.use(session({
         maxAge: 60000
     },
     secret: 'hjvsjkavsjkxavjshv',
-    saveUninitialized: true,
-    resave: false,
+    saveUninitialized: false,
+    resave: true,
     store: new MongoStore({
         url: "mongodb+srv://enroutedb:mlab2020@enroute-84wi0.mongodb.net/Store"
     })
@@ -126,12 +129,12 @@ app.use(function (req, res, ) {
     });
 });
 
-app.use(function (req, res, next) {
+/*app.use(function (req, res, next) {
     if (!req.session) {
         return next(new Error('Oh no')) //handle error
     }
     next() //otherwise continue
-});
+});*/
 
 /*app.use(function (error, req, res, next) {
     res.status(500).render('500', {
@@ -143,4 +146,4 @@ app.use(function (req, res, next) {
 
 app.listen(app.get('port'), function (req, res) {
     console.log(`Server running on port`, app.get('port'));
-})
+});

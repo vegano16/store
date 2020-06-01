@@ -93,6 +93,7 @@ router.post('/register', urlencodedParser, [
   check('phone').not().isEmpty().withMessage("Phone number is required").isLength({
         min: 10
     }).withMessage('Invalid phone number'),
+    check('gender').not().isEmpty().withMessage("Gender is required"),
   check('username').not().isEmpty().withMessage("Username is required").isLength({
         min: 3
     }).withMessage('Username must be at least 3 chars long'),
@@ -118,6 +119,7 @@ router.post('/register', urlencodedParser, [
             lname: req.body.lname,
             email: req.body.email,
             phone: req.body.phone,
+            gender: req.body.gender,
             username: req.body.username,
             password: req.body.password
         };
@@ -133,6 +135,7 @@ router.post('/register', urlencodedParser, [
             lname: req.body.lname.charAt(0).toUpperCase() + req.body.lname.slice(1),
             email: req.body.email,
             phone: req.body.phone,
+            gender: req.body.gender,
             username: req.body.username,
             password: req.body.password,
             since: new Date().toUTCString(),
@@ -151,9 +154,9 @@ router.post('/register', urlencodedParser, [
                         console.log(err);
                         return;
                     } else {
-                        console.log('User Registered!');
+                        /*console.log('User Registered!');*/
                         req.flash('success', 'User Registered!');
-                        res.redirect('/users/register/image');
+                        res.redirect('/users/login');
                         // res.json(newUser);
                     }
                 })

@@ -126,7 +126,8 @@ h6 {
 
 /*User Form*/
 
-#registrationForm input {
+#registrationForm input,
+#registrationForm select {
     margin: 2px 10px;
     padding: 2px 7px;
     box-sizing: content-box;
