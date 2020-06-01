@@ -69,14 +69,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.set('trust proxy', 1) // trust first proxy
 app.use(session({
     cookie: {
-        secure: true,
+        secure: false,
         maxAge: 60000
     },
     secret: 'hjvsjkavsjkxavjshv',
     saveUninitialized: true,
     resave: false,
     store: new MongoStore({
-        url: "mongodb+srv://enroutedb:mlab2020@enroute-84wi0.mongodb.net/Store"
+        url: "mongodb+srv://enroutedb:mlab2020@enroute-84wi0.mongodb.net/Store",
+        autoReconnect: true
     })
 }))
 app.use(flash());
