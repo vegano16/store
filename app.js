@@ -70,7 +70,7 @@ app.set('trust proxy', 1) // trust first proxy
 app.use(session({
     cookie: {
         secure: false,
-        maxAge: 60000
+        maxAge: 1000 * 60 * 60 * 168
     },
     secret: 'hjvsjkavsjkxavjshv',
     saveUninitialized: true,
