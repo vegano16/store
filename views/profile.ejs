@@ -58,7 +58,7 @@
                 
         <div class="row justify-content-center">
             <div class="row col-4 col-md-3 col-lg-8 justify-content-center">
-            <img src="<%-user.image%>" class="col-12" alt="<%-user.fname%>'s profile image"/>
+            <img src="<%=user.image%>" class="col-12" alt="<%=user.fname%>'s profile image"/>
                     <button class="btn btn-danger delete-profile-image" style="margin: 2px;" data-id="<%=(JSON.stringify({id:id, image:image}))%>" title="Delete Image"><i class="fas fa-trash-alt"></i></button>
             </div>
         </div>
