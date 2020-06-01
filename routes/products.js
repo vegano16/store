@@ -228,7 +228,7 @@ router.post('/post', urlencodedParser, [
             image: req.body.image,
             gallery: "http://res.cloudinary.com/bravo2020/image/upload/v1590094143/store/gallery/product.jpg.jpg",
             date: new Date().toUTCString(),
-            by: user._id,
+            by: req.user._id,
             lastUpdated: new Date().toUTCString(),
             approved: false,
             approved_by: ""
