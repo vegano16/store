@@ -154,7 +154,7 @@ router.post('/register', urlencodedParser, [
                         console.log(err);
                         return;
                     } else {
-                        /*console.log('User Registered!');*/
+                        console.log('User Registered!');
                         req.flash('success', 'User Registered!');
                         res.redirect('/users/login');
                         // res.json(newUser);
