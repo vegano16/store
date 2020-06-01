@@ -46,7 +46,7 @@ router.post('/login', urlencodedParser, function (req, res, next) {
         failureRedirect: '/users/login',
         failureFlash: 'Invalid username or password.',
         successFlash: 'You are now logged in'
-    }, console.log(req.user))(req, res, next);
+    })(req, res, next);
 })
 
 router.get('/logout', function (req, res) {
@@ -154,7 +154,7 @@ router.post('/register', urlencodedParser, [
                         console.log(err);
                         return;
                     } else {
-                        console.log('User Registered!');
+                        /*console.log('User Registered!');*/
                         req.flash('success', 'User Registered!');
                         res.redirect('/users/login');
                         // res.json(newUser);

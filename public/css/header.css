@@ -33,7 +33,7 @@ nav {
     position: relative;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: 10px;
+    grid-gap: 1px;
 }
 
 .page_nav a {
@@ -67,9 +67,10 @@ nav {
     justify-content: center;
     height: 150px;
     background-color: ;
-    border-radius: 5px;
+    border-radius: 2px;
     text-align: center;
-    border: 5px solid silver;
+    border: 1px solid silver;
+    /*box-shadow: 0.5px 0.5px 1px 1px rgba(0, 0, 0, 0.1);*/
 }
 
 
