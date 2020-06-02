@@ -17,7 +17,7 @@ require('dotenv').config();
 /*
 let dbUrl = "mongodb+srv://enroutedb:mlab2020@enroute-84wi0.mongodb.net/Store" || "mongodb://localhost/store";*/
 
-mongoose.connect("mongodb://localhost/store", {
+mongoose.connect("mongodb+srv://enroutedb:mlab2020@enroute-84wi0.mongodb.net/Store", {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
@@ -76,7 +76,7 @@ app.use(session({
     saveUninitialized: true,
     resave: false,
     store: new MongoStore({
-        url: "mongodb://localhost/store",
+        url: "mongodb+srv://enroutedb:mlab2020@enroute-84wi0.mongodb.net/Store",
         autoReconnect: true
     })
 }))
