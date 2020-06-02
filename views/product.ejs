@@ -34,16 +34,18 @@
 
     <div class="row nav_and_content justify-content-around">
         <%- include('partials/nav-template') -%>
-        <div class="row col-12 col-lg-9 page_content">
+        <div class="col-12 col-lg-9 page_content">
 
             <h1>Product(<%=product._id%>)</h1>
 
-            <div class="row productSelect">
+            <div class="productSelect">
                 <div class="row">
                     <div class="col-12 col-lg-6">
                         <img class="productImage col-12" src="<%=product.image%>" />
                     </div>
                     <div class="productInfo col-12 col-lg-6">
+                        <h2>Product Information</h2>
+                        <hr>
                         <p><%=product.name%> <%=product.model%></p>
                         <p>GH&cent; <%=product.price%></p>
                         <p><%=product.color%></p>
@@ -67,10 +69,12 @@
                     </div>
                 </div>
 
-                <div class="imageGallery row justify-content-center">
-                    <% product.gallery.forEach(function (image) { %>
-                    <img class="image col-12 col-sm-6 col-lg-4" src="<%=image%>" />
-                    <%})%>
+                <div class="imageGallery col-12">
+                    <div class="row justify-content-center">
+                        <% product.gallery.forEach(function (image) { %>
+                        <img class="image col-12 col-sm-6 col-lg-4" src="<%=image%>" />
+                        <%})%>
+                    </div>
                 </div>
 
                 <hr>
