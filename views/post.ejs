@@ -30,6 +30,7 @@
 
 
     <%- include('partials/header') -%>
+    <%- messages('message_template', locals) %>
 
     <div class="row nav_and_content justify-content-around">
 
@@ -38,7 +39,6 @@
             <h1 class="col-12 text-center">Create Product</h1>
             <h6 class="col-12 text-center">Complete the form below to create a product.</h6><br>
 
-            <%- messages('message_template', locals) %>
             <% if(errors){ %>
             <div>
                 <p class="row alert alert-danger"><%=errors[0].msg %></p>

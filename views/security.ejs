@@ -30,43 +30,42 @@
 
 
     <%- include('partials/header') -%>
+    <%- messages('message_template', locals) %>
 
     <div class="row nav_and_content justify-content-around">
         <%- include('partials/nav-template') -%>
         <div class="col-12 col-lg-9 page_content">
 
-            <%- messages('message_template', locals) %>
+            <small>Hi <%=user.fname%></small>
 
-            <small><%=user%></small>
+            <form method="post" action="/users/profile/security/<%=user._id%>" id="security" class="row justify-content-around">
 
+                <div class="col-10 col-md-6">
+                    <h1 class="text-center">Security Options</h1>
+                    <h6 class="text-center">Manage your security.</h6><br>
 
-
-            <form method="post" action="/users/profile/security/<%=user._id%>" id="security" class="col-8 offset-2">
-
-                <h1 class="text-center">Password Change</h1>
-                <h6 class="text-center">Complete the form below to update your password.</h6><br>
-
-                <% if(errors){ %>
-                <div>
-                    <p class="row alert alert-danger"><%=errors[0].msg %></p>
-                </div>
-                <%}%>
-        <h5 class="row">Security Options</h5>
+                    <% if(errors){ %>
+                    <div>
+                        <p class="row alert alert-danger"><%=errors[0].msg %></p>
+                    </div>
+                    <%}%>
+        <h5 class="row">Password Change</h5>
         <div class="row form-group">
             <label for="password">New Password</label>
             <input type="password" name="newPassword" placeholder="New password" class="form-control form-control-sm" value="<%=data.password%>">
-        </div>
+                </div>
 
-        <div class="row form-group">
-            <input type="password" name="newPasswordConfirmation" placeholder="Confirm new password" class="form-control form-control-sm">
-        </div>
-        <div class="row form-group">
-            <label for="password">Current Password</label>
-            <input type="password" name="currentPassword" placeholder="Enter current password" class="form-control form-control-sm">
-        </div>
+                <div class="row form-group">
+                    <input type="password" name="newPasswordConfirmation" placeholder="Confirm new password" class="form-control form-control-sm">
+                </div>
+                <div class="row form-group">
+                    <label for="password">Current Password</label>
+                    <input type="password" name="currentPassword" placeholder="Enter current password" class="form-control form-control-sm">
+                </div>
 
-        <div class="row form-group justify-content-between">
-            <input type="submit" value="Change Password" class="btn btn-success">
+                <div class="row form-group justify-content-between">
+                    <input type="submit" value="Change Password" class="btn btn-danger">
+                </div>
         </div>
         </form>
     </div>

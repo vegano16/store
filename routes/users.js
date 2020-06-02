@@ -217,7 +217,7 @@ router.get('/profile/security/:id', function (req, res) {
     res.render('security', {
         errors: "",
         data: "",
-        nav: "Home > Users > Profile > Password Change > " + req.user._id
+        nav: "Home > Profile > Security"
     });
 })
 
@@ -249,7 +249,7 @@ router.post('/profile/security/:id', urlencodedParser, [
             errors: errors.array(),
             user: req.user,
             data: data,
-            nav: "Home > Users > Profile > Password Change > " + req.user.fname + " " + req.user.lname
+            nav: "Home > Profile > Security"
         });
 
     } else {

@@ -32,15 +32,15 @@
 
     <%- include('partials/header') -%>
 
+
+
     <div class="nav_and_content col-12 justify-content-around">
 
-        <form method="post" action="/users/login" class="col-8 col-sm-8 col-md-8 col-lg-4" style="margin: 50px auto 150px auto;">
-
+        <form method="post" action="/users/login" class="col-8 col-sm-8 col-md-8 col-lg-4" style="margin: 20px auto 150px auto;">
             <div>
+                <%- messages('message_template', locals) %>
                 <h3 class="text-center">Welcome, Please log in.</h3>
                 <hr><br>
-
-                <%- messages('message_template', locals) %>
                 <!-- <input type="text" name="phone" placeholder="Phone"> -->
                 <div class="form-group">
                     <input type="text" name="username" placeholder="Username" class="form-control">

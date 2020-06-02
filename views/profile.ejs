@@ -30,6 +30,7 @@
 
 
     <%- include('partials/header') -%>
+    <%- messages('message_template', locals) %>
 
     <div class="row nav_and_content justify-content-around">
 
@@ -37,7 +38,7 @@
 
         <div class="col-12 col-lg-9 page_content justify-content-around">
 
-            <%- messages('message_template', locals) %>
+
 
             <small><%=user%></small>
 

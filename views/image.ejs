@@ -30,6 +30,7 @@
 
 
     <%- include('partials/header') -%>
+    <%- messages('message_template', locals) %>
 
     <div class="col-12 nav_and_content justify-content-around">
 
@@ -38,8 +39,6 @@
             <form method="post" action="/products/gallery/<%=id%>" enctype="multipart/form-data" id="productsForm" class="col-10 col-md-8 col-lg-6">
 
                 <h1 class="text-center">Upload Product Image(s)</h1>
-
-                <%- messages('message_template', locals) %>
 
                 <% if(errors){ %>
                 <div>
