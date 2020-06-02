@@ -34,51 +34,46 @@
 
     <div class="row nav_and_content justify-content-around">
         <%- include('partials/nav-template') -%>
-        <div class="col-12 col-lg-9 page_content">
+        <div class="row col-12 col-lg-9 page_content">
 
             <h1>Product(<%=product._id%>)</h1>
 
-            <small><%=user%></small>
+            <div class="row productSelect">
+                <div class="row">
+                    <div class="col-12 col-lg-6">
+                        <img class="productImage col-12" src="<%=product.image%>" />
+                    </div>
+                    <div class="productInfo col-12 col-lg-6">
+                        <p><%=product.name%> <%=product.model%></p>
+                        <p>GH&cent; <%=product.price%></p>
+                        <p><%=product.color%></p>
+                        <p><%=product.size%></p>
+                        <p><%=product.quality%></p>
+                        <p><%=product.description%></p>
 
-            <div class="row col-12 productSelect">
-                <img class="productImage col-12 col-lg-6" src="<%=product.image%>" />
-                <div class="productInfo col-12 col-lg-6">
-                    <p><%=product.name%> <%=product.model%></p>
-                    <p>GH&cent; <%=product.price%></p>
-                    <p><%=product.color%></p>
-                    <p><%=product.size%></p>
-                    <p><%=product.quality%></p>
-                    <p><%=product.description%></p>
+                        <hr>
+
+                        <div class="row justify-content-around" style="padding: 10px;">
+                            <%if(user && user.accessLevel=="client"){%>
+                            <a href="/products/update/<%=product._id%>" class="btn btn-default" title="Edit"><i class="fas fa-pen"></i></a>
+                            <button class="btn btn-danger delete-product" data-id="<%=product._id%>" title="Delete"><i class="fas fa-trash-alt"></i></button>
+                            <%}%>
+                <a href="#" class="btn btn-success" title="Like"><i class="fas fa-heart"></i></a>
+               <button class="btn btn-warning addToCart" data-id="<%=(JSON.stringify(product))%>" title="Add to cart"><i class="fas fa-cart-plus"></i></button>
+                        </div>
+
+                        <hr>
+
+                    </div>
                 </div>
-                <div class="imageGallery row col-12 justify-content-center">
+
+                <div class="imageGallery row justify-content-center">
                     <% product.gallery.forEach(function (image) { %>
-                    <img class="image col-4" src="<%=image%>" />
+                    <img class="image col-12 col-sm-6 col-lg-4" src="<%=image%>" />
                     <%})%>
                 </div>
 
                 <hr>
-                <div class="row justify-content-center">
-                    <%if(user && user.accessLevel=="client"){%>
-                    <a href="/products/update/<%=product._id%>" class="btn btn-default" title="Edit"><i class="fas fa-pen"></i></a>
-                    <button class="btn btn-danger delete-product" data-id="<%=product._id%>" title="Delete"><i class="fas fa-trash-alt"></i></button>
-                    <%}%>
-                <a href="#" class="btn btn-success" title="Like"><i class="fas fa-heart"></i></a>
-               <button class="btn btn-warning addToCart" data-id="<%=(JSON.stringify(product))%>" title="Add to cart"><i class="fas fa-cart-plus"></i></button>
-
-                </div>
-            </div>
-
-
-            <div>
-
-                <small class="box"><%=product%></small>
-                <hr>
-                <%if(user){%>
-                <a href="/products/update/<%=product._id%>" class="btn btn-default" title="Edit"><i class="fas fa-pen"></i></a>
-                <button class="btn btn-danger delete-product" data-id="<%=product._id%>" title="Delete"><i class="fas fa-trash-alt"></i></button>
-                <%}%>
-                <a href="#" class="btn btn-success" title="Like"><i class="fas fa-heart"></i></a>
-                <button class="btn btn-warning addToCart" data-id="<%=(JSON.stringify(product))%>" title="Add to cart"><i class="fas fa-cart-plus"></i></button>
 
             </div>
         </div>

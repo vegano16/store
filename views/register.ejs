@@ -48,32 +48,46 @@
                 <%}%>
         </div>
 
-
-        <div class="row form-group justify-content-center">
+            <div class="row form-group">
             <input type="text" name="fname" placeholder="First Name" class="form-control col-lg-5" autocomplete="off" value="<%=data.fname%>">
+            </div>
+
+            <div class="row form-group">
                 <input type="text" name="lname" placeholder="Last Name" class="form-control col-lg-5" autocomplete="off" value="<%=data.lname%>">
             </div>
 
-            <div class="row form-group justify-content-center">
-                <input type="text" name="email" placeholder="Email" class="form-control col-lg-5" autocomplete="off" value="<%=data.email%>">
-                <input type="text" name="phone" placeholder="Phone" class="form-control col-lg-5" autocomplete="off" value="<%=data.phone%>">
-            </div>
-
-            <div class="row form-group justify-content-center">
+            <div class="row form-group">
                 <select name="gender" class="form-control col-lg-5">
                     <option value="<%=data.gender || ' '%>" selected><%=data.gender || "Gender"%></option>
                     <option value="male">Male</option>
                     <option value="female">Female</option>
                 </select>
-                <input type="text" name="username" placeholder="Username" class="form-control col-lg-5" autocomplete="off" value="<%=data.username%>">
             </div>
 
-            <div class="row form-group justify-content-center">
+            <div class="row form-group">
+                <input type="text" name="email" placeholder="Email" class="form-control col-lg-5" autocomplete="off" value="<%=data.email%>">
+            </div>
+
+            <div class="row form-group">
+                <input type="text" name="phone" placeholder="Phone" class="form-control col-lg-5" autocomplete="off" value="<%=data.phone%>">
+            </div>
+
+            <div class="row form-group">
+                <input type="text" name="username" placeholder="Username" class="form-control col-lg-5" autocomplete="off" value="<%=data.username%>">
+                <small>Username cannot be changed later.</small>
+            </div>
+
+            <div class="row form-group">
                 <input type="password" name="password" placeholder="Password" class="form-control col-lg-5" autocomplete="off" value="<%=data.password%>">
+            </div>
+
+            <div class="row form-group">
                 <input type="password" name="passwordConfirmation" placeholder="Confirm Password" class="form-control col-lg-5" autocomplete="off" value="<%=data.passwordConfirmation%>">
             </div>
 
-            <input type="submit" value="Register" class="btn btn-primary">
+            <div class="row form-group">
+                <input type="submit" value="Register" class="btn btn-primary">
+            </div>
         </form>
     </div>
 

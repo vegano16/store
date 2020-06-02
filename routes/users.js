@@ -343,6 +343,7 @@ router.post('/profile/:id', urlencodedParser, [
   check('lname').not().isEmpty().withMessage("Last name is required").isLength({
         min: 3
     }).withMessage('Name must be at least 3 chars long'),
+    check('gender').not().isEmpty().withMessage("Select your gender"),
   check('email').not().isEmpty().withMessage("Email is required").isEmail().normalizeEmail().withMessage('Email is invalid'),
   check('phone').not().isEmpty().withMessage("Phone number is required").isLength({
         min: 10
@@ -368,6 +369,7 @@ router.post('/profile/:id', urlencodedParser, [
 
             fname: req.body.fname,
             lname: req.body.lname,
+            gender: req.body.gender,
             email: req.body.email,
             phone: req.body.phone,
             lastUpdated: new Date().toUTCString()

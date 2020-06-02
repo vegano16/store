@@ -1,3 +1,14 @@
+h1 {
+    font-size: 20px;
+}
+
+.page_nav {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1px;
+}
+
 .productlist {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -5,6 +16,10 @@
 }
 
 @media screen and (min-width: 576px) {
+    h1 {
+        font-size: 20px;
+    }
+
     .productlist {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -15,6 +30,10 @@
 
 
 @media screen and (min-width: 768px) {
+    h1 {
+        font-size: 25px;
+    }
+
     .head-user {
         order: 1
     }
@@ -27,6 +46,13 @@
         order: 2
     }
 
+    .page_nav {
+        position: relative;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 1px;
+    }
+
     .productlist {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
@@ -36,6 +62,13 @@
 
 
 @media screen and (min-width: 992px) {
+    .page_nav {
+        position: relative;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 1px;
+    }
+
     .productlist {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
