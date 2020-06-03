@@ -8,7 +8,7 @@
     <meta name="keywords" content="delivery, market, enroute24, 24">
     <meta name="author" content="tagsmann">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#F76C6C">
+    <meta name="theme-color" content="#24305E">
 
     <title>Enroute24 | Home</title>
 
@@ -25,6 +25,8 @@
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/styles.css">
 
+    <script src="/js/tellTime.js"></script>
+
 </head>
 
 <body class="container-fluid">
@@ -36,8 +38,8 @@
 
         <div class="col-12 col-lg-9 page_content d-none d-lg-block">
 
-            <small style="color: #AEAEAE;">
-                <%=new Date().toUTCString()%> | <span style="color: #F76C6C;"><%= products.length%></span> items displayed</small><br>
+            <small style="color: #AEAEAE;" class="smallInfoBar"><span class="tellTime">Local Time</span>
+                | <span style="color: #F76C6C;"><%= products.length%></span> items displayed</small><br>
 
             <!--<% if(user){%>
 <span>Hi <%=user.fname%></span>

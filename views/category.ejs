@@ -37,8 +37,8 @@
 
         <div class="col-12 col-lg-9 page_content">
 
-            <small style="color: #AEAEAE;">
-                <%=new Date().toUTCString()%> | <span style="color: #F76C6C;"><%= products.length%></span> items displayed</small><br>
+            <small style="color: #AEAEAE;" class="smallInfoBar"><span class="tellTime">Local Time</span>
+                | <span style="color: #F76C6C;"><%= products.length%></span> items displayed</small><br>
 
             <div class="productlist">
                 <% products.forEach(function (product) { %>
