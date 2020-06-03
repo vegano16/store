@@ -2,6 +2,17 @@ h1 {
     font-size: 20px;
 }
 
+.header a {
+    margin: 2px;
+    color: #F76C6C;
+    font-size: 20px;
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border-color: #F76C6C;
+}
+
 .page_nav {
     position: relative;
     display: grid;

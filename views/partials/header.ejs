@@ -1,55 +1,58 @@
-<header>
-    <div class="col-12 text-center">
-        <h1><a href="/" style="text-decoration: none; font-size: 25px;cursor: default;"><small><span style="color: silver">Enroute</span><span style="color: red">24</span></small></a></h1>
-    </div>
+<header class="row">
+    <div class="col-12">
+        <div class="col-12 text-center">
+            <h1><a href="/" style="text-decoration: none; font-size: 25px;cursor: default;"><small><span style="color: silver">Enroute</span><span style="color: red">24</span></small></a></h1>
+        </div>
 
 
-    <div class="row header justify-content-around">
+        <div class="row header justify-content-around">
 
-        <div class="row head-user col-6 col-sm-6 col-md-3 col-lg-3 justify-content-around" style="margin: 5px 0;">
+            <div class="row head-user col-6 col-sm-6 col-md-3 col-lg-3 justify-content-around" style="margin: 5px 0;">
 
-            <%if(user){%>
-            <a href="/users/profile/<%=user._id%>">
-                <button class="btn btn-default" style="color: #000;"><i class="fas fa-user" title="<%=user.fname%>"></i></button>
-            </a>
-            <%}%>
+                <%if(user){%>
+                <a href="/users/profile/<%=user._id%>">
+                    <span class="" style="color:;"><i class="fas fa-user" title="<%=user.fname%>"></i></span>
+                </a>
+                <%}%>
                 
-            <button class="btn btn-default displayCart" style="color: orange;"><i class="fas fa-cart-arrow-down" title="Cart"></i></button>
+                <a href="#" class="displayCart" style="color:;"><i class="fas fa-cart-arrow-down" title="Cart"></i></a>
                 
-            <button class="btn btn-default displayWishList" style="color: limegreen;" title="Wish List"><i class="far fa-heart"></i></button>
+                <a href="#" class="displayWishList" style="color:;" title="Wish List"><i class="far fa-heart"></i></a>
     </div>
         
-        <div class="row head-control col-6 col-sm-6 col-md-3 col-lg-3 justify-content-center" style="margin: 5px 0;">
+        <div class="row head-control col-6 col-sm-6 col-md-3 col-lg-3 justify-content-around" style="margin: 5px 0;">
               <%if(user){%>
 
-            <a href="/admin/dashboard/<%=user._id%>">
-                <button class="btn btn-warning" style="color: #fff;" title="Dashboard"><i class="fas fa-chart-line"></i></button>
-            </a>
+                <a href="/admin/dashboard/<%=user._id%>" title="Dashboard">
+                    <i class="fas fa-chart-line"></i>
+                </a>
 
-            <a href="/user/messages">
-                <button class="btn btn-primary" style="color: #fff;" title="Messages"><i class="fas fa-envelope"></i></button>
-            </a>
-            <a href="/users/logout">
-                <button class="btn btn-danger" style="color: #fff;" title="Log Out"><i class="fas fa-sign-out-alt"></i></button>
-            </a>
-            <%}else{%>
-            <a href="/users/register">
-                <button class="btn btn-primary" style="color: #fff;" title="Register"><i class="fas fa-user-plus"></i></button>
-            </a>
-            <a href="/users/login">
-                <button class="btn btn-success" style="color: #fff;" title="Log In"><i class="fas fa-sign-in-alt"></i></button>
-            </a>
-            <%}%>
+                <a href="/user/messages" title="Messages">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="/users/logout" title="Log Out">
+                    <i class="fas fa-sign-out-alt"></i>
+                </a>
+                <%}else{%>
+                <a href="/users/register" title="Register">
+                    <i class="fas fa-user-plus"></i>
+                </a>
+                <a href="/users/login" title="Log In">
+                    <i class="fas fa-sign-in-alt"></i>
+                </a>
+                <%}%>
         </div>
 
 
 <div class="row head-search col-sm-12 col-md-6 col-lg-6 justify-content-around" style="margin: 5px 0;">
 <form method="get" action="/products/search" class="searchForm row col-12 justify-content-around">
-<input type="text" name="key" autocomplete="off" placeholder="Enter search item" class="form-control row col-12 col-sm-12 col-md-12 col-lg-12">
+<input type="text" name="key" autocomplete="off" placeholder="Make a search..." class="form-control row col-12 col-sm-12 col-md-12 col-lg-12">
       </form>
         </div>
 
       </div>
-      <small><%=nav%></small>
-            <hr>
+        
+        </div>
+      <small style="padding: 5px 30px; color: #AEAEAE;"><%=nav%></small>
 </header>
+<hr>
