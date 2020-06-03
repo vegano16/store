@@ -36,13 +36,13 @@
 
     <div class="row nav_and_content justify-content-around">
 
-        <div class="col-10 col-sm-10 col-md-6 col-lg-4" style="margin: 40px auto 150px auto;">
+        <div class="col-10 col-sm-10 col-md-6 col-lg-4" style="margin: 30px auto 150px auto;">
             <%- messages('message_template', locals) %>
 
             <form method="post" action="/users/login" class="col-12">
 
 
-                <h3 class="text-center">Welcome, Please log in.</h3>
+                <h3 style="color: #F76C6C; text-align: center">Welcome, Please log in.</h3>
                 <hr><br>
                 <!-- <input type="text" name="phone" placeholder="Phone"> -->
                 <div class="form-group">
@@ -51,7 +51,7 @@
                 <div class="form-group">
                     <input type="password" name="password" placeholder="Password" class="form-control">
                 </div>
-                <input type="submit" value="log in" class="btn btn-primary">
+                <input type="submit" value="log in" class="btn" style="background-color: #F76C6C; color: #fff;">
             </form>
         </div>
 
