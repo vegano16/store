@@ -36,14 +36,14 @@
 
         <div class="col-12 col-lg-9 page_content d-none d-lg-block">
 
-            <small style="color: #AEAEAE;"><%= products.length%> items displayed</small><br>
-            <% if(user){%>
-            <h2 class="row">Hello <%=user.fname%></h2>
-            <%}else{%>
-            <h2 class="row">Hello User</h2>
-            <%}%>
-            
-            <small class="row"><%=user%></small>
+            <small style="color: #AEAEAE;">
+                <%=new Date().toUTCString()%> | <span style="color: #F76C6C;"><%= products.length%></span> items displayed</small><br>
+
+            <!--<% if(user){%>
+<span>Hi <%=user.fname%></span>
+<%}else{%>
+<span>Hi User</span>
+<%}%>-->
 
             <div class="productlist">
                 <% products.forEach(function (product) { %>
@@ -61,10 +61,10 @@
                     <hr>
                     <div class="row justify-content-center">
                         <%if(user && user.accessLevel=="client"){%>
-                        <a href="/products/update/<%=product._id%>" class="btn btn-default" title="Edit"><i class="fas fa-pen"></i></a>
+                        <a href="/products/update/<%=product._id%>" class="btn" style="background-color: #24305E; color: #ffffff" title="Edit"><i class="fas fa-pen"></i></a>
                         <%}%>
-                <a href="#" class="btn btn-success" title="Like"><i class="fas fa-heart"></i></a>
-               <button class="btn btn-warning addToCart" data-id="<%=(JSON.stringify(product))%>" title="Add to cart"><i class="fas fa-cart-plus"></i></button>
+                <a href="#" class="btn" style="background-color: #A8D0E6; color: #ffffff" title="Like"><i class="fas fa-heart"></i></a>
+                <a href="#" class="btn addToCart" style="background-color: #F76C6C; color: #ffffff" data-id="<%=(JSON.stringify(product))%>" title="Add to cart"><i class="fas fa-cart-plus"></i></a>
 
                     </div>
                 </div>

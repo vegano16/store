@@ -8,6 +8,7 @@
     <meta name="keywords" content="delivery, market, enroute24, 24">
     <meta name="author" content="tagsmann">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#F76C6C">
 
     <title>Enroute24 | Post</title>
 
@@ -45,20 +46,31 @@
             </div>
             <%}%>
 
-                <div class="row form-group justify-content-center">
-                    <select name="category" class="form-control form-control-sm col-12 col-md-5 col-lg-5">
-                        <option value="<%=data.category%>" selected><%=data.category || "Category"%></option>
+        <div class="row form-group justify-content-center">
+                    
+            <select name="category" class="form-control form-control-sm col-12 col-md-5 col-lg-5">
+            <option value="<%=data.category%>" selected><%=data.category || "Category"%></option>
             <option value="groceries">Groceries</option>
-            <option value="meals">Meals</option>
+            <option value="foods&amp;bevs">foods &amp; Beverages</option>
+            <option value="medicals">Medicals</option>
             <option value="electronics">Electronics</option>
+            <option value="electricals">Electricals</option>
+            <option value="furniture">Furniture</option>
+            <option value="boutique">Boutique</option>
+            <option value="oil&amp;gas">Oil &amp; Gas</option>
             <option value="deliveries">Deliveries</option>
             </select>
 
             <select name="subcategory" class="form-control form-control-sm col-12 col-md-5 col-lg-5">
                 <option value="<%=data.subcategory%>" selected><%=data.subcategory || "Subcategory"%></option>
                 <option value="groceries">Groceries</option>
-                <option value="meals">Meals</option>
+                <option value="foods&amp;bevs">foods &amp; Beverages</option>
+                <option value="medicals">Medicals</option>
                 <option value="electronics">Electronics</option>
+                <option value="electricals">Electricals</option>
+                <option value="furniture">Furniture</option>
+                <option value="boutique">Boutique</option>
+                <option value="oil&amp;gas">Oil &amp; Gas</option>
                 <option value="deliveries">Deliveries</option>
             </select>
     </div>
@@ -91,7 +103,7 @@
 
     <div class="row form-group justify-content-center">
 
-        <pre><textarea name="description" placeholder="Product description" class="form-control form-control-sm col-12 col-md-5 col-lg-5" value="<%=data.description%>"></textarea></pre>
+        <pre><textarea name="description" placeholder="Product description" class="form-control form-control-sm col-12 col-md-5 col-lg-5"><%=data.description%></textarea></pre>
     </div>
 
 

@@ -8,6 +8,7 @@
     <meta name="keywords" content="delivery, market, enroute24, 24">
     <meta name="author" content="tagsmann">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#F76C6C">
 
     <title>Enroute24 | Product Update</title>
 
@@ -52,19 +53,29 @@
             <small class="row col-12 text-center">Complete the form below to update this product.</small>
 
             <div class="row form-group">
-                <select name="category" class="form-control form-control-sm col-lg-6">
-                    <option value="<%=product.category || ""%>" selected><%=product.category || ""%></option>
+                <select name="category" class="form-control form-control-sm col-12 col-md-5 col-lg-5">
+                    <option value="<%=product.category%>" selected><%=product.category || "Category"%></option>
                     <option value="groceries">Groceries</option>
-                    <option value="meals">Meals</option>
+                    <option value="foods&amp;bevs">foods &amp; Beverages</option>
+                    <option value="medicals">Medicals</option>
                     <option value="electronics">Electronics</option>
+                    <option value="electricals">Electricals</option>
+                    <option value="furniture">Furniture</option>
+                    <option value="boutique">Boutique</option>
+                    <option value="oil&amp;gas">Oil &amp; Gas</option>
                     <option value="deliveries">Deliveries</option>
                 </select>
 
-                <select name="subcategory" class="form-control form-control-sm col-lg-6">
-                    <option value="<%=product.subcategory || ""%>" selected><%=product.subcategory || ""%></option>
+                <select name="subcategory" class="form-control form-control-sm col-12 col-md-5 col-lg-5">
+                    <option value="<%=product.subcategory%>" selected><%=product.subcategory || "Subcategory"%></option>
                     <option value="groceries">Groceries</option>
-                    <option value="meals">Meals</option>
+                    <option value="foods&amp;bevs">foods &amp; Beverages</option>
+                    <option value="medicals">Medicals</option>
                     <option value="electronics">Electronics</option>
+                    <option value="electricals">Electricals</option>
+                    <option value="furniture">Furniture</option>
+                    <option value="boutique">Boutique</option>
+                    <option value="oil&amp;gas">Oil &amp; Gas</option>
                     <option value="deliveries">Deliveries</option>
                 </select>
 
