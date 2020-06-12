@@ -69,7 +69,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.set('trust proxy', 1) // trust first proxy
 app.use(session({
     cookie: {
-        secure: true,
+        secure: false,
         maxAge: 1000 * 60 * 60 * 168
     },
     secret: 'hjvsjkavsjkxavjshv',
