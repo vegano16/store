@@ -52,17 +52,19 @@
                         <p><%=product.color%></p>
                         <p><%=product.size%></p>
                         <p><%=product.quality%></p>
+                        <p><%=product.productId%></p>
                         <p><%=product.description%></p>
 
                         <hr>
 
                         <div class="row justify-content-around" style="padding: 10px;">
                             <%if(user && user.accessLevel=="client"){%>
-                            <a href="/products/update/<%=product._id%>" class="btn btn-default" title="Edit"><i class="fas fa-pen"></i></a>
+                            <a href="/shopping/update/<%=product._id%>" class="btn btn-default" title="Edit"><i class="fas fa-pen"></i></a>
                             <button class="btn btn-danger delete-product" data-id="<%=product._id%>" title="Delete"><i class="fas fa-trash-alt"></i></button>
                             <%}%>
-                <a href="#" class="btn btn-success" title="Like"><i class="fas fa-heart"></i></a>
-               <button class="btn btn-warning addToCart" data-id="<%=(JSON.stringify(product))%>" title="Add to cart"><i class="fas fa-cart-plus"></i></button>
+                            <a href="/shopping/report/<%=product._id%>" class="btn btn-primary" title="Report Product"><i class="fas fa-exclamation-triangle"></i></a>
+                            <a href="#" class="btn btn-success" title="Like"><i class="fas fa-heart"></i></a>
+                            <button class="btn btn-warning addToCart" data-id="<%=(JSON.stringify(product))%>" title="Add to cart"><i class="fas fa-cart-plus"></i></button>
                         </div>
 
                         <hr>

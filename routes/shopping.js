@@ -8,6 +8,7 @@ const {
 } = require('express-validator');
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
+const generateUniqueId = require('generate-unique-id');
 const multer = require('multer');
 /*const storage = multer.memoryStorage();*/
 const storage = multer.diskStorage({
@@ -53,43 +54,20 @@ let User = require('../models/user');
 let Product = require('../models/product');
 
 
-
-//search product
-
-router.get('/search', urlencodedParser, function (req, res) {
-
-    let qry = req.query.key
-
-
-    /*Product.find({}, function (err, products) {
-    if (err) {
-        console.log(err);
-    } else {
-        console.log(products);
-        res.render('index', {
-            nav: "Home",
-            products: products
-        })
-        // res.render('index', {user: user})
-    }
-})*/
-
-    console.log(qry);
-
-    Product.find({
-        "name": qry
-    }, function (error, products) {
-
-        //        console.log(products);
-
-        res.render('search', {
-            products: products,
-            errors: "",
-            nav: "Home > Products > Search > " + req.query.key,
-            key: qry
-        });
+router.get('/', function (req, res) {
+    Product.find({}, function (err, products) {
+        if (err) {
+            console.log("No product found");
+        } else {
+            /*console.log(products);*/
+            res.render('shopping', {
+                nav: "Shopping",
+                products: products
+            })
+            // res.render('index', {user: user})
+        }
     })
-})
+});
 
 //Product Categories
 router.get('/category/:id', function (req, res) {
@@ -100,7 +78,7 @@ router.get('/category/:id', function (req, res) {
         res.render('category', {
             products: products,
             errors: "",
-            nav: "Home > Products > Category > " + req.params.id
+            nav: "Shopping > Category: " + req.params.id
         });
     })
 
@@ -127,11 +105,13 @@ router.get('/update/:id', function (req, res) {
 //Update Post
 router.post('/update/:id', urlencodedParser, [
   check('category').not().isEmpty().withMessage("Product category is required"),
-  check('subcategory').not().isEmpty().withMessage("Product subcategory is required"),
   check('name').not().isEmpty().withMessage("Product name is required"),
   check('price').not().isEmpty().withMessage("Product price is required"),
   check('color').not().isEmpty().withMessage("Product color is required"),
-  check('description').not().isEmpty().withMessage("Product description is required")
+check('keywords').not().isEmpty().withMessage("Keywords are required"),
+  check('country').not().isEmpty().withMessage("Country is required"),
+  check('districts').not().isEmpty().withMessage("Districts are required"),
+  check('details').not().isEmpty().withMessage("Product details is required")
 ], function (req, res) {
 
     const errors = validationResult(req);
@@ -151,7 +131,10 @@ router.post('/update/:id', urlencodedParser, [
             color: req.body.color,
             size: req.body.size,
             quality: req.body.quality,
-            description: req.body.description,
+            keywords: req.body.keywords,
+            country: req.body.country,
+            districts: req.body.districts,
+            details: req.body.details,
             lastUpdated: new Date().toUTCString()
         };
 
@@ -166,7 +149,7 @@ router.post('/update/:id', urlencodedParser, [
             } else {
                 console.log(req.params.id);
                 req.flash('success', 'Update Successful!');
-                res.redirect('/products/' + req.params.id);
+                res.redirect('/shopping/' + req.params.id);
                 // res.json(newUser);
             }
         })
@@ -185,11 +168,13 @@ router.get('/post', function (req, res) {
 //Post Product
 router.post('/post', urlencodedParser, [
   check('category').not().isEmpty().withMessage("Product category is required"),
-  check('subcategory').not().isEmpty().withMessage("Product subcategory is required"),
   check('name').not().isEmpty().withMessage("Product name is required"),
   check('price').not().isEmpty().withMessage("Product price is required"),
   check('color').not().isEmpty().withMessage("Product color is required"),
-  check('description').not().isEmpty().withMessage("Product description is required")
+check('keywords').not().isEmpty().withMessage("Keywords are required"),
+check('country').not().isEmpty().withMessage("Country is required"),
+check('districts').not().isEmpty().withMessage("Ditricts are required"),
+  check('details').not().isEmpty().withMessage("Product description is required")
 ], function (req, res) {
 
     const errors = validationResult(req);
@@ -197,7 +182,6 @@ router.post('/post', urlencodedParser, [
         // return res.status(422).json({ errors: errors.array() });
         let data = {
             category: req.body.category,
-            subcategory: req.body.subcategory,
             name: req.body.name,
             model: req.body.model,
             from: req.body.from,
@@ -205,7 +189,10 @@ router.post('/post', urlencodedParser, [
             color: req.body.color,
             size: req.body.size,
             quality: req.body.quality,
-            description: req.body.description
+            keywords: req.body.keywords,
+            country: req.body.country,
+            districts: req.body.districts,
+            details: req.body.details
         }
         res.render('post', {
             errors: errors.array(),
@@ -224,14 +211,21 @@ router.post('/post', urlencodedParser, [
             color: req.body.color,
             size: req.body.size,
             quality: req.body.quality,
-            description: req.body.description,
+            keywords: req.body.keywords,
+            country: req.body.country,
+            districts: req.body.districts,
+            details: req.body.details,
             image: req.body.image,
             gallery: "http://res.cloudinary.com/bravo2020/image/upload/v1590094143/store/gallery/product.jpg.jpg",
             date: new Date().toUTCString(),
             by: req.user._id,
             lastUpdated: new Date().toUTCString(),
             approved: false,
-            approved_by: ""
+            approved_by: "",
+            productId: generateUniqueId({
+                length: 8,
+                useLetters: false
+            })
         });
         newProduct.save(function (err) {
             if (err) {
@@ -240,12 +234,14 @@ router.post('/post', urlencodedParser, [
             } else {
                 console.log(newProduct._id);
                 req.flash('success', 'Post Successful, Please Upload Images');
-                res.redirect('/products/gallery/' + newProduct._id);
+                res.redirect('/shopping/gallery/' + newProduct._id);
                 // res.json(newUser);
             }
         })
     }
 });
+
+//Ajax get request to set product image(DP)
 router.get('/gallery/productimage', urlencodedParser, function (req, res) {
     if (mongoose.Types.ObjectId.isValid(req.query.id)) {
         let query = {
@@ -268,6 +264,8 @@ router.get('/gallery/productimage', urlencodedParser, function (req, res) {
         });
     }
 });
+
+//Ajax get request to delete product image
 router.get('/gallery/deleteimage', urlencodedParser, function (req, res) {
     if (mongoose.Types.ObjectId.isValid(req.query.id)) {
         let query = {
@@ -307,6 +305,8 @@ router.get('/gallery/deleteimage', urlencodedParser, function (req, res) {
         });
     }
 });
+
+//Display product images/gallery
 router.get('/gallery/:id', function (req, res) {
     if (mongoose.Types.ObjectId.isValid(req.params.id)) {
         Product.findById(req.params.id, function (error, product) {
@@ -323,6 +323,7 @@ router.get('/gallery/:id', function (req, res) {
         });
     }
 });
+
 //Post Product Image
 router.post('/gallery/:id', upload.single('image'), function (req, res) {
     if (mongoose.Types.ObjectId.isValid(req.params.id)) {
@@ -359,14 +360,14 @@ router.post('/gallery/:id', upload.single('image'), function (req, res) {
                             } else {
                                 console.log('gallery', galleryUrls);
                                 req.flash('success', 'Image Update Successful!');
-                                res.redirect('/products/gallery/' + req.params.id);
+                                res.redirect('/shopping/gallery/' + req.params.id);
                             }
                         })
                     }
                 })
             } else {
                 req.flash('warning', 'No image selected!');
-                res.redirect('/products/gallery/' + req.params.id);
+                res.redirect('/shopping/gallery/' + req.params.id);
             }
         })
     }
@@ -377,7 +378,7 @@ router.get('/:id', function (req, res) {
         Product.findById(req.params.id, function (error, product) {
             res.render('product', {
                 product: product,
-                nav: "Home > Product > " + product.name + " " + product.model
+                nav: "Product: " + product.name + " " + product.model
             });
         })
     } else {
@@ -386,29 +387,7 @@ router.get('/:id', function (req, res) {
         });
     }
 
-})
-
-//Delete Image
-router.get('/products/gallery/?id', function (req, res) {
-
-    console.log(req.query);
-    let query = {
-        _id: req.params.id
-    }
-    if (mongoose.Types.ObjectId.isValid(req.params.id)) {
-        Product.deleteOne(query, function (error) {
-            if (error) {
-                console.log(error);
-            }
-            req.flash('danger', 'Post Deleted!');
-            res.send('Success');
-        })
-    } else {
-        res.status(404).render('404', {
-            nav: ""
-        });
-    }
-})
+});
 
 //Delete product
 router.delete('/:id', function (req, res) {

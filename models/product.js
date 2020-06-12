@@ -5,10 +5,6 @@ let productSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    subcategory: {
-        type: String,
-        required: true
-    },
     name: {
         type: String,
         required: true
@@ -27,7 +23,7 @@ let productSchema = mongoose.Schema({
     },
     color: {
         type: String,
-        required: false
+        required: true
     },
     size: {
         type: String,
@@ -37,9 +33,25 @@ let productSchema = mongoose.Schema({
         type: String,
         required: false
     },
+    keywords: {
+        type: String,
+        required: Array
+    },
+    country: {
+        type: String,
+        required: true
+    },
+    districts: {
+        type: Array,
+        required: true
+    },
+    productId: {
+        type: String,
+        required: true
+    },
     description: {
         type: String,
-        required: false
+        required: true
     },
     image: {
         type: String,

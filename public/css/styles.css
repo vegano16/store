@@ -4,7 +4,7 @@ h1 {
 
 .header a {
     margin: 2px;
-    color: #F76C6C;
+    color: rgba(255, 255, 255, 0.7);
     font-size: 20px;
 }
 
@@ -18,6 +18,22 @@ h1 {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 1px;
+}
+
+.page_nav div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 150px;
+    background-color: ;
+    text-align: center;
+    /*border: 1px solid silver;*/
+    box-shadow: 0px 0px 1px 1px rgba(65, 65, 65, 0.1);
+}
+
+.page_nav div:hover {
+    background-color: #24305E;
+    color: rgba(255, 255, 255, 0.7);
 }
 
 .productlist {

@@ -37,7 +37,7 @@
 
         <form method="post" action="/products/post" id="productPostForm" class="col-10 col-sm-8 col-md-10 col-lg-8">
 
-            <h1 class="col-12 text-center">Create Product</h1>
+            <h1 class="col-12 text-center" style="color: #F76C6C;">Create Product</h1>
             <h6 class="col-12 text-center">Complete the form below to create a product.</h6><br>
 
             <% if(errors){ %>
@@ -46,9 +46,11 @@
             </div>
             <%}%>
 
-        <div class="row form-group justify-content-center">
-                    
-            <select name="category" class="form-control form-control-sm col-12 col-md-5 col-lg-5">
+        
+            <div class="row justify-content-around">
+    <div class="col-12 col-md-6">          
+    <div class="row">
+    <select name="category" class="form-control form-control-sm col-12">
             <option value="<%=data.category%>" selected><%=data.category || "Category"%></option>
             <option value="groceries">Groceries</option>
             <option value="foods&amp;bevs">foods &amp; Beverages</option>
@@ -61,54 +63,40 @@
             <option value="deliveries">Deliveries</option>
             </select>
 
-            <select name="subcategory" class="form-control form-control-sm col-12 col-md-5 col-lg-5">
-                <option value="<%=data.subcategory%>" selected><%=data.subcategory || "Subcategory"%></option>
-                <option value="groceries">Groceries</option>
-                <option value="foods&amp;bevs">foods &amp; Beverages</option>
-                <option value="medicals">Medicals</option>
-                <option value="electronics">Electronics</option>
-                <option value="electricals">Electricals</option>
-                <option value="furniture">Furniture</option>
-                <option value="boutique">Boutique</option>
-                <option value="oil&amp;gas">Oil &amp; Gas</option>
-                <option value="deliveries">Deliveries</option>
-            </select>
+            <input type="text" name="name" placeholder="Name" class="form-control form-control-sm col-12" value="<%=data.name%>" autocomplete="off">
+
+            <input type="text" name="model" placeholder="Model" class="form-control form-control-sm col-12" value="<%=data.model%>" autocomplete="off">
+
+            <input type="text" name="size" placeholder="Size" class="form-control form-control-sm col-12" value="<%=data.size%>" autocomplete="off">
+
+            <input type="text" name="color" placeholder="Color" class="form-control form-control-sm col-12" value="<%=data.color%>" autocomplete="off">
+
+            <input type="text" name="quality" placeholder="Quality" class="form-control form-control-sm col-12" value="<%=data.quality%>" autocomplete="off">
+
+            <input type="text" name="price" placeholder="Price" class="form-control form-control-sm col-12" value="<%=data.price%>" autocomplete="off">
+
+            <input type="text" name="from" placeholder="Name of agency" class="form-control form-control-sm col-12" value="<%=data.from || ''%>" autocomplete="off">
+
+            <input type="text" name="keywords" placeholder="Keywords" class="form-control form-control-sm col-12" value="<%=data.keywords%>" autocomplete="off">
+
+            <input type="text" name="country" placeholder="Country" class="form-control form-control-sm col-12" value="<%=data.country%>" autocomplete="off">
+
+            <input type="text" name="districts" placeholder="Districts" class="form-control form-control-sm col-12" value="<%=data.districts%>" autocomplete="off">
+
     </div>
-    <div class="row form-group justify-content-center">
-
-        <input type="text" name="name" placeholder="Name" class="form-control form-control-sm col-12 col-md-5 col-lg-5" value="<%=data.name%>">
-
-        <input type="text" name="model" placeholder="Model" class="form-control form-control-sm col-12 col-md-5 col-lg-5" value="<%=data.model%>">
-
-    </div>
-
-    <div class="row form-group justify-content-center">
-
-        <input type="text" name="from" placeholder="Name of agency" class="form-control form-control-sm col-12 col-md-5 col-lg-5" value="<%=data.from || ""%>">
-
-        <input type="text" name="price" placeholder="Price" class="form-control form-control-sm col-12 col-md-5 col-lg-5" value="<%=data.price%>">
     </div>
 
-    <div class="row form-group justify-content-center">
-
-        <input type="text" name="color" placeholder="Color" class="form-control form-control-sm col-12 col-md-5 col-lg-5" value="<%=data.color%>">
-
-        <input type="text" name="size" placeholder="size" class="form-control form-control-sm col-12 col-md-5 col-lg-5" value="<%=data.size%>">
+    <div class="col-12 col-md-6">
+        <div class="row">
+            <pre class="col-12"><textarea name="details" placeholder="Other Product Details" class="form-control form-control-sm col-12" style="width: 100%; height: 150px;"><%=data.details%></textarea></pre>
+        </div>
     </div>
 
-    <div class="row form-group justify-content-center">
-
-        <input type="text" name="quality" placeholder="quality" class="form-control form-control-sm col-12 col-md-5 col-lg-5" value="<%=data.quality%>">
-    </div>
-
-    <div class="row form-group justify-content-center">
-
-        <pre><textarea name="description" placeholder="Product description" class="form-control form-control-sm col-12 col-md-5 col-lg-5"><%=data.description%></textarea></pre>
     </div>
 
 
-    <div class="row form-group justify-content-center">
-        <input type="submit" value="Post Product" class="btn btn-success btn-lg col-12 col-md-5 col-lg-5">
+    <div class="row justify-content-center">
+        <input type="submit" value="Post Product" class="btn btn-success btn-lg col-12 col-md-5 col-lg-3">
     </div>
     </form>
     </div>

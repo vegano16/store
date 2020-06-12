@@ -64,7 +64,7 @@ $(document).ready(function () {
 
         $.ajax({
             type: 'DELETE',
-            url: '/products/' + id,
+            url: '/shopping/' + id,
             success: function (response) {
                 alert('Product Deleted!');
                 window.location.href = '/';
@@ -82,7 +82,7 @@ $(document).ready(function () {
 
         $.ajax({
             type: 'GET',
-            url: '/products/gallery/deleteimage',
+            url: '/shopping/gallery/deleteimage',
             contentType: 'application/json',
             data: JSON.parse(data),
             success: function (response) {
@@ -101,7 +101,7 @@ $(document).ready(function () {
 
         $.ajax({
             type: 'GET',
-            url: '/products/gallery/productimage',
+            url: '/shopping/gallery/productimage',
             contentType: 'application/json',
             data: JSON.parse(data),
             success: function (response) {

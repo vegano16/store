@@ -1,4 +1,4 @@
-<header class="row">
+<header class="row" style="background-color: #F76C6C;">
     <div class="col-12">
         <div class="row d-none d-lg-block" style="background-color: #F76C6C;">
             <h1 class="row justify-content-center"><a href="/" style="text-decoration: none; font-size: 35px;cursor: default; font-weight: bold;"><small><span style="color: #ffffff;">Enroute</span><span style="color: #24305E">24</span></small></a></h1>
@@ -27,17 +27,17 @@
                     <i class="fas fa-chart-line"></i>
                 </a>
 
-                <a href="/user/messages" title="Messages">
+                <a href="/users/messages" title="Messages">
                     <i class="fas fa-envelope"></i>
                 </a>
-                <a href="/users/logout" title="Log Out">
+                <a href="/logout" title="Log Out">
                     <i class="fas fa-sign-out-alt"></i>
                 </a>
                 <%}else{%>
                 <a href="/users/register" title="Register">
                     <i class="fas fa-user-plus"></i>
                 </a>
-                <a href="/users/login" title="Log In">
+                <a href="/login" title="Log In">
                     <i class="fas fa-sign-in-alt"></i>
                 </a>
                 <%}%>
@@ -45,8 +45,8 @@
 
 
 <div class="row head-search col-sm-12 col-md-6 col-lg-6 justify-content-around" style="margin: 5px 0;">
-<form method="get" action="/products/search" class="searchForm row col-12 justify-content-around">
-<input type="text" name="key" autocomplete="off" placeholder="Make a search..." class="form-control row col-12 col-sm-12 col-md-12 col-lg-12">
+<form method="get" action="/search" class="searchForm row col-12 justify-content-around">
+<input type="text" name="query" autocomplete="off" placeholder="Make a search..." class="form-control row col-12 col-sm-12 col-md-12 col-lg-12">
       </form>
         </div>
 
@@ -54,5 +54,6 @@
         
         </div>
       <small style="padding: 5px 0 0 30px; color: #AEAEAE;"><%=nav%></small>
+
 </header>
 <hr>

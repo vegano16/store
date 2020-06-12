@@ -43,6 +43,12 @@
 
             <small><%=user%></small>
 
+            <% if(errors){ %>
+            <div>
+                <p class="row alert alert-danger"><%=errors[0].msg %></p>
+            </div>
+            <%}%>
+
 
             <h1 class="text-center"><%=user.fname%>'s Account</h1>
             <h6 class="text-center">Make changes to your account.</h6><br>
@@ -51,83 +57,71 @@
 
                 <form method="post" action="/users/profile/image/<%=user._id%>" enctype="multipart/form-data" id="profileImageForm" class="col-12 col-lg-4 justify-content-center">
 
-
-                    <% if(errors){ %>
-                    <div>
-                        <p class="row alert alert-danger"><%=errors[0].msg %></p>
+                    <div class="row justify-content-center">
+                        <div class="row col-4 col-md-3 col-lg-8 justify-content-center">
+                            <img src="<%=user.image%>" class="col-12" alt="<%=user.fname%>'s profile image" />
+                            <button class="btn btn-danger delete-profile-image" style="margin: 2px;" data-id="<%=(JSON.stringify({id:id, image:image}))%>" title="Delete Image"><i class="fas fa-trash-alt"></i></button>
+                        </div>
                     </div>
-                    <%}%>
-                
-        <div class="row justify-content-center">
-            <div class="row col-4 col-md-3 col-lg-8 justify-content-center">
-            <img src="<%=user.image%>" class="col-12" alt="<%=user.fname%>'s profile image"/>
-                    <button class="btn btn-danger delete-profile-image" style="margin: 2px;" data-id="<%=(JSON.stringify({id:id, image:image}))%>" title="Delete Image"><i class="fas fa-trash-alt"></i></button>
+
+                    <div class="row justify-content-center">
+                        <div class="col-4 col-lg-10">
+                            <input type="file" name="image" placeholder="Profile Image" class="form-control form-control-sm ">
+                            <input type="submit" value="Upload Image" class="btn btn-primary">
+                        </div>
+                    </div>
+                </form>
+
+                <form method="post" action="/users/profile/<%=user._id%>" id="profileForm" class="col-12 col-lg-8">
+
+                    <div class="offset-2 col-8">
+                        <div class="row form-group">
+                            <label for="fname" style="font-weight: 100;">First Name</label>
+                            <input type="text" name="fname" placeholder="First name" class="form-control form-control-sm" value="<%=user.fname%>">
+                        </div>
+
+                        <div class="row form-group">
+                            <label for="lname" style="font-weight: 100;">Last Name</label>
+                            <input type="text" name="lname" placeholder="Last name" class="form-control form-control-sm" value="<%=user.lname%>">
+                        </div>
+
+                        <div class="row form-group">
+                            <label for="gender" style="font-weight: 100;">Gender</label>
+                            <select name="gender" class="form-control">
+                                <option value="<%=user.gender || ' '%>" selected><%=user.gender || "Gender"%></option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                            </select>
+                        </div>
+
+                        <div class="row form-group">
+                            <label for="email" style="font-weight: 100;">Email</label>
+                            <input type="email" name="email" placeholder="Email" class="form-control form-control-sm" value="<%=user.email%>">
+                        </div>
+
+                        <div class="row form-group">
+                            <label for="phone" style="font-weight: 100;">Phone</label>
+                            <input type="text" name="phone" placeholder="Phone" class="form-control form-control-sm" value="<%=user.phone%>">
+                            <small>Phone number cannot be changed.</small>
+
+                        </div>
+
+                        <div class="row form-group">
+                            <label for="password" style="font-weight: 100;">Password</label>
+                            <input type="password" name="password" placeholder="Enter your password" class="form-control form-control-sm" autocomplete="off">
+                        </div>
+                    </div>
+                    <hr>
+
+                    <div class="row form-group justify-content-around">
+                        <button type="submit" class="btn btn-success">Update Account</button>
+                        <a href="/users/profile/security/<%=user._id%>" class="btn btn-warning">Change Password</a>
+                        <button class="btn btn-danger delete-account" data-id="<%=user._id%>">Delete Account</button>
+                    </div>
+                </form>
             </div>
+
         </div>
-
-        <div class="row justify-content-center">
-            <div class="col-4 col-lg-10">
-                <input type="file" name="image" placeholder="Profile Image" class="form-control form-control-sm ">
-                <input type="submit" value="Upload Image" class="btn btn-primary">
-            </div>
-        </div>
-        </form>
-
-        <form method="post" action="/users/profile/<%=user._id%>" id="profileForm" class="col-12 col-lg-8">
-
-            <div class="offset-2 col-8">
-                <div class="row form-group">
-                    <label for="fname" style="font-weight: 100;">First Name</label>
-                    <input type="text" name="fname" placeholder="First name" class="form-control form-control-sm" value="<%=user.fname%>">
-                </div>
-
-                <div class="row form-group">
-                    <label for="lname" style="font-weight: 100;">Last Name</label>
-                    <input type="text" name="lname" placeholder="Last name" class="form-control form-control-sm" value="<%=user.lname%>">
-                </div>
-
-                <div class="row form-group">
-                    <label for="gender" style="font-weight: 100;">Gender</label>
-                    <select name="gender" class="form-control">
-                        <option value="<%=user.gender || ' '%>" selected><%=user.gender || "Gender"%></option>
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                    </select>
-                </div>
-
-                <div class="row form-group">
-                    <label for="email" style="font-weight: 100;">Email</label>
-                    <input type="email" name="email" placeholder="Email" class="form-control form-control-sm" value="<%=user.email%>">
-                </div>
-
-                <div class="row form-group">
-                    <label for="phone" style="font-weight: 100;">Phone</label>
-                    <input type="text" name="phone" placeholder="Phone" class="form-control form-control-sm" value="<%=user.phone%>">
-
-                </div>
-
-                <div class="row form-group" style="font-weight: 100;">
-                    <label for="username">Username</label>
-                    <input type="text" name="username" placeholder="Username" class="form-control form-control-sm" value="<%=user.username%>">
-                    <small>Username cannot be changed.</small>
-                </div>
-
-                <div class="row form-group">
-                    <label for="password" style="font-weight: 100;">Password</label>
-                    <input type="password" name="password" placeholder="Enter your password" class="form-control form-control-sm" autocomplete="off">
-                </div>
-            </div>
-            <hr>
-
-            <div class="row form-group justify-content-around">
-                <button type="submit" class="btn btn-success">Update Account</button>
-                <a href="/users/profile/security/<%=user._id%>" class="btn btn-warning">Change Password</a>
-                <button class="btn btn-danger delete-account" data-id="<%=user._id%>">Delete Account</button>
-            </div>
-        </form>
-    </div>
-
-    </div>
     </div>
 
     <%- include('partials/footer') -%>

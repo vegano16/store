@@ -17,7 +17,7 @@ require('dotenv').config();
 /*
 let dbUrl = "mongodb+srv://enroutedb:mlab2020@enroute-84wi0.mongodb.net/Store" || "mongodb://localhost/store";*/
 
-mongoose.connect("mongodb+srv://enroutedb:mlab2020@enroute-84wi0.mongodb.net/Store", {
+mongoose.connect("mongodb://localhost/store", {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
@@ -76,7 +76,7 @@ app.use(session({
     saveUninitialized: true,
     resave: false,
     store: new MongoStore({
-        url: "mongodb+srv://enroutedb:mlab2020@enroute-84wi0.mongodb.net/Store",
+        url: "mongodb://localhost/store",
         autoReconnect: true
     })
 }))
@@ -101,6 +101,7 @@ app.use(function (req, res, next) {
 //   res.locals.user = req.user || null;
 //   next();
 // })
+
 app.get('/', function (req, res) {
     Product.find({}, function (err, products) {
         if (err) {
@@ -114,14 +115,118 @@ app.get('/', function (req, res) {
             // res.render('index', {user: user})
         }
     })
-})
+});
+
+app.get('/diet', function (req, res) {
+    Product.find({}, function (err, products) {
+        if (err) {
+            console.log("No product found");
+        } else {
+            /*console.log(products);*/
+            res.render('diet', {
+                nav: "Diets",
+                products: products
+            })
+            // res.render('index', {user: user})
+        }
+    })
+});
+app.get('/deliveries', function (req, res) {
+    Product.find({}, function (err, products) {
+        if (err) {
+            console.log("No product found");
+        } else {
+            /*console.log(products);*/
+            res.render('deliveries', {
+                nav: "Deliveries",
+                products: products
+            })
+            // res.render('index', {user: user})
+        }
+    })
+});
+
+app.get('/rides', function (req, res) {
+    Product.find({}, function (err, products) {
+        if (err) {
+            console.log("No product found");
+        } else {
+            /*console.log(products);*/
+            res.render('rides', {
+                nav: "Rides",
+                products: products
+            })
+            // res.render('index', {user: user})
+        }
+    })
+});
+
+//Login
+app.get('/login', function (req, res) {
+    res.render('login', {
+        nav: "Home > Users > Log in"
+    });
+});
+//Login
+app.post('/login', urlencodedParser, function (req, res, next) {
+    passport.authenticate('local', {
+        successRedirect: '/',
+        failureRedirect: '/login',
+        failureFlash: 'Invalid username or password.'
+        /*successFlash: 'You are now logged in'*/
+    })(req, res, next);
+});
+
+app.get('/logout', function (req, res) {
+    req.logout();
+    req.flash('danger', 'You are logged out.');
+    res.redirect('/login');
+});
+
+//Search product
+app.get('/search', urlencodedParser, function (req, res) {
+
+    let qry = req.query.query
+
+
+    /*Product.find({}, function (err, products) {
+    if (err) {
+        console.log(err);
+    } else {
+        console.log(products);
+        res.render('index', {
+            nav: "Home",
+            products: products
+        })
+        // res.render('index', {user: user})
+    }
+})*/
+
+    console.log(qry);
+
+    Product.find({
+        "name": qry
+    }, function (error, products) {
+
+        //        console.log(products);
+
+        res.render('search', {
+            products: products,
+            errors: "",
+            nav: "Home > Search ",
+            query: qry
+        });
+    })
+});
+
+
 
 let admin = require('./routes/admin');
 let users = require('./routes/users');
-let products = require('./routes/products');
+let shopping = require('./routes/shopping');
 app.use('/admin', admin);
 app.use('/users', users);
-app.use('/products', products);
+app.use('/shopping', shopping);
 
 
 app.use(function (req, res, ) {

@@ -34,27 +34,6 @@ let urlencodedParser = bodyParser.urlencoded({
 let User = require('../models/user');
 
 
-router.get('/login', function (req, res) {
-    res.render('login', {
-        nav: "Home > Users > Log in"
-    });
-})
-
-router.post('/login', urlencodedParser, function (req, res, next) {
-    passport.authenticate('local', {
-        successRedirect: '/',
-        failureRedirect: '/users/login',
-        failureFlash: 'Invalid username or password.',
-        successFlash: 'You are now logged in'
-    })(req, res, next);
-})
-
-router.get('/logout', function (req, res) {
-    req.logout();
-    req.flash('danger', 'You are logged out.');
-    res.redirect('/users/login');
-})
-
 router.get('/register', function (req, res) {
     res.render('register', {
         errors: "",
@@ -65,7 +44,7 @@ router.get('/register', function (req, res) {
 
 router.post('/register', urlencodedParser, [
 
-  check('username').not().isEmpty().withMessage("Username is required").custom((value, {
+  check('phone').not().isEmpty().withMessage("Phone number is required").custom((value, {
         req
     }) => {
         return new Promise((resolve, reject) => {
@@ -76,7 +55,7 @@ router.post('/register', urlencodedParser, [
                     reject(new Error("Server Error"))
                 }
                 if (Boolean(user)) {
-                    reject(new Error("Username already in use"))
+                    reject(new Error("Phone number already in use"))
                 }
                 resolve(true);
             })
@@ -94,9 +73,6 @@ router.post('/register', urlencodedParser, [
         min: 10
     }).withMessage('Invalid phone number'),
     check('gender').not().isEmpty().withMessage("Gender is required"),
-  check('username').not().isEmpty().withMessage("Username is required").isLength({
-        min: 3
-    }).withMessage('Username must be at least 3 chars long'),
   check('password').not().isEmpty().withMessage("Password is required").isLength({
         min: 5
     }).withMessage('Password must be at least 5 chars long')
@@ -120,7 +96,6 @@ router.post('/register', urlencodedParser, [
             email: req.body.email,
             phone: req.body.phone,
             gender: req.body.gender,
-            username: req.body.username,
             password: req.body.password
         };
 
@@ -136,7 +111,6 @@ router.post('/register', urlencodedParser, [
             email: req.body.email,
             phone: req.body.phone,
             gender: req.body.gender,
-            username: req.body.username,
             password: req.body.password,
             since: new Date().toUTCString(),
             lastUpdated: new Date().toUTCString()
@@ -156,7 +130,7 @@ router.post('/register', urlencodedParser, [
                     } else {
                         /*console.log('User Registered!');*/
                         req.flash('success', 'User Registered!');
-                        res.redirect('/users/login');
+                        res.redirect('/login');
                         // res.json(newUser);
                     }
                 })
@@ -348,9 +322,6 @@ router.post('/profile/:id', urlencodedParser, [
   check('phone').not().isEmpty().withMessage("Phone number is required").isLength({
         min: 10
     }).withMessage('Invalid phone number'),
-  check('username').not().isEmpty().withMessage("Username is required").isLength({
-        min: 3
-    }).withMessage('Username must be at least 3 chars long'),
     check('password').not().isEmpty().withMessage("Enter your password.")
 ], function (req, res) {
 
@@ -360,6 +331,8 @@ router.post('/profile/:id', urlencodedParser, [
         res.render('profile', {
             errors: errors.array(),
             user: req.user,
+            image: req.user.image,
+            id: req.user._id,
             nav: "Home > Users > Profile > " + req.user.fname + " " + req.user.lname
         });
 
@@ -367,11 +340,10 @@ router.post('/profile/:id', urlencodedParser, [
 
         let updatedUser = {
 
-            fname: req.body.fname,
-            lname: req.body.lname,
+            fname: req.body.fname.charAt(0).toUpperCase() + req.body.fname.slice(1),
+            lname: req.body.lname.charAt(0).toUpperCase() + req.body.lname.slice(1),
             gender: req.body.gender,
             email: req.body.email,
-            phone: req.body.phone,
             lastUpdated: new Date().toUTCString()
 
         };

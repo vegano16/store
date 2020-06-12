@@ -40,6 +40,7 @@
         <div class="col-12 col-lg-9 page_content">
 
             <small><%=user%></small>
+            <small><%=product%></small>
 
             <% if(errors){ %>
             <div>
@@ -47,7 +48,7 @@
             </div>
             <%}%>
 
-        <form method="post" action="/products/update/<%=product._id%>" id="EditForm" class="container offset-lg-2 col-lg-8">
+        <form method="post" action="/shopping/update/<%=product._id%>" id="EditForm" class="container offset-lg-2 col-lg-8">
 
             <h1 class="text-center">Update Product</h1>
             <small class="row col-12 text-center">Complete the form below to update this product.</small>
@@ -66,27 +67,19 @@
                     <option value="deliveries">Deliveries</option>
                 </select>
 
-                <select name="subcategory" class="form-control form-control-sm col-12 col-md-5 col-lg-5">
-                    <option value="<%=product.subcategory%>" selected><%=product.subcategory || "Subcategory"%></option>
-                    <option value="groceries">Groceries</option>
-                    <option value="foods&amp;bevs">foods &amp; Beverages</option>
-                    <option value="medicals">Medicals</option>
-                    <option value="electronics">Electronics</option>
-                    <option value="electricals">Electricals</option>
-                    <option value="furniture">Furniture</option>
-                    <option value="boutique">Boutique</option>
-                    <option value="oil&amp;gas">Oil &amp; Gas</option>
-                    <option value="deliveries">Deliveries</option>
-                </select>
-
                 <input type="text" name="name" placeholder="Name" class="form-control form-control-sm col-lg-6" value="<%=product.name%>">
                 <input type="text" name="model" placeholder="Model" class="form-control form-control-sm col-lg-6" value="<%=product.model%>">
 
                 <input type="text" name="price" placeholder="Price" class="form-control form-control-sm col-lg-6" value="<%=product.price%>">
                 <input type="text" name="color" placeholder="Color" class="form-control form-control-sm col-lg-6" value="<%=product.color%>">
 
-                <input type="text" name="size" placeholder="size" class="form-control form-control-sm col-lg-6" value="<%=product.size%>">
-                <input type="text" name="quality" placeholder="quality" class="form-control form-control-sm col-lg-6" value="<%=product.quality%>">
+                <input type="text" name="size" placeholder="Size" class="form-control form-control-sm col-lg-6" value="<%=product.size%>">
+                <input type="text" name="quality" placeholder="Quality" class="form-control form-control-sm col-lg-6" value="<%=product.quality%>">
+
+                <input type="text" name="keywords" placeholder="Keywords" class="form-control form-control-sm col-lg-6" value="<%=product.keywords%>">
+                <input type="text" name="country" placeholder="Country" class="form-control form-control-sm col-lg-6" value="<%=product.country%>">
+
+                <input type="text" name="districts" placeholder="Districts" class="form-control form-control-sm col-lg-6" value="<%=product.districts%>">
 
                 <pre><textarea name="description" placeholder="Product description" class="form-control form-control-sm col-lg-6"><%=product.description%></textarea></pre>
             </div>
@@ -94,7 +87,7 @@
 
             <input type="submit" value="Update this Product" class="btn btn-success">
 
-            <a href="/products/gallery/<%=product._id%>" class="btn btn-warning" data-id="<%=product._id%>" title="Update Image"><i class="fas fa-image"></i></a>
+            <a href="/shopping/gallery/<%=product._id%>" class="btn btn-warning" data-id="<%=product._id%>" title="Update Image"><i class="fas fa-image"></i></a>
             </form>
         </div>
     </div>

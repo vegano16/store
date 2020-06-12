@@ -30,74 +30,49 @@
 </head>
 
 <body class="container-fluid">
-    <%- include('partials/header') -%>
-    <%- messages('message_template', locals) %>
 
-    <div class="row nav_and_content">
-        <%- include('partials/index-nav') -%>
+    <div class="serviceWrapper row justify-content-around">
+        <div class="serviceOptions col-12 col-sm-8 col-lg-4" style="color: #24305E;">
+            <div style="display: flex; flex-direction: column; justify-content: center; text-align: center; padding: 30px 0 10px 0;">
+                <h1>EnRoute<span style="color: #F76C6C;">24</span></h1>
+                <hr>
 
-        <div class="col-12 col-lg-9 page_content d-none d-lg-block">
-
-            <small style="color: #AEAEAE;" class="smallInfoBar"><span class="tellTime">Local Time</span>
-                | <span style="color: #F76C6C;"><%= products.length%></span> items displayed</small><br>
-
-            <!--<% if(user){%>
-<span>Hi <%=user.fname%></span>
-<%}else{%>
-<span>Hi User</span>
-<%}%>-->
-
-            <div class="productlist">
-                <% products.forEach(function (product) { %>
-
-                <div class="product" style="margin: 5px">
-                    <a href="/products/<%=product._id%>">
-                        <div class="imageHolder" style="width: 100%; height: 175px;"><img class="image" src="<%=product.image%>" style="border-radius: 5px; box-shadow: 0px 2px 2px 1px rgba(0, 0, 0, 0.1);" /></div>
-                    </a>
-                    <div class="productAbout">
-                        <small><%=product.name%></small>
-                        <small><%=product.model%></small><br>
-                        <small>GH&cent;<%=product.price%></small>
-                        <small><%=product.color%></small>
-                    </div>
-                    <hr>
-                    <div class="row justify-content-center">
-                        <%if(user && user.accessLevel=="client"){%>
-                        <a href="/products/update/<%=product._id%>" class="btn" style="background-color: #24305E; color: #ffffff" title="Edit"><i class="fas fa-pen"></i></a>
-                        <%}%>
-                <a href="#" class="btn" style="background-color: #A8D0E6; color: #ffffff" title="Like"><i class="fas fa-heart"></i></a>
-                <a href="#" class="btn addToCart" style="background-color: #F76C6C; color: #ffffff" data-id="<%=(JSON.stringify(product))%>" title="Add to cart"><i class="fas fa-cart-plus"></i></a>
-
-                    </div>
-                </div>
-
-                <% }) %>
+                <% if(user){%>
+                <small>Hi <%=user.fname%>, Please Select Service</small>
+                <%}else{%>
+                <small>Please Select Service</small><%}%>
             </div>
 
+            <div class="row" style="">
+                <div class="col-12 serviceList justify-content-around" style="color: rgba(255, 255, 255, 0.7);">
+
+                    <a href="/diet">
+                        <div><i class="fas fa-concierge-bell align-self-center"></i><small>Order Lunch</small></div>
+                    </a>
+
+                    <a href="/shopping">
+                        <div><i class="fas fa-store-alt align-self-center"></i><small>Go Shopping</small></div>
+                    </a>
+
+                    <a href="/deliveries">
+                        <div><i class="fas fa-box align-self-center"></i><small>Delivery Services</small></div>
+                    </a>
+
+                    <a href="/rides">
+                        <div><i class="fas fa-car align-self-center"></i><small>Rides And Rentals</small></div>
+                    </a>
+                </div>
+            </div>
+            <div class="" style="display: flex; flex-direction: column; justify-content: center; text-align: center; padding: 10px;">
+                <small>We bring breakfast, lunch and supper together with shopping, package delivery and ride booking services to your fingertips.</small>
+                <hr>
+            </div>
+            <div class="" style="text-align: center;">
+                <small>copyright &copy; EnRoute24</small>
+            </div>
         </div>
+
     </div>
-    <div class="overlay" style="display: none;"></div>
-    <div class="myCart" style="display: none;">
-
-        <table>
-            <tr>
-                <th class="col-lg-3">hello</th>
-                <th class="col-lg-3">hello</th>
-                <th class="col-lg-3">hello</th>
-                <th class="col-lg-3">hello</th>
-            </tr>
-        </table>
-
-        <!--<div>
-    <small class="text-left">My Cart...</small>
-    <small class="text-right" style="margin: 15px; font-size: 30px; color: red;"><i class="fas fa-times"></i></small>
-</div>-->
-
-        <ol class="cartListing">
-        </ol>
-    </div>
-
-    <%- include('partials/footer') -%>
 
     <script src="/bower_components/jquery/dist/jquery.js"></script>
     <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
