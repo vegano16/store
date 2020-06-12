@@ -17,7 +17,7 @@ require('dotenv').config();
 /*
 let dbUrl = "mongodb+srv://enroutedb:mlab2020@enroute-84wi0.mongodb.net/Store" || "mongodb://localhost/store";*/
 
-mongoose.connect("mongodb://localhost/store", {
+mongoose.connect("mongodb+srv://enroutedb:mlab2020@enroute-84wi0.mongodb.net/Store", {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
@@ -69,14 +69,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.set('trust proxy', 1) // trust first proxy
 app.use(session({
     cookie: {
-        secure: false,
+        secure: true,
         maxAge: 1000 * 60 * 60 * 168
     },
     secret: 'hjvsjkavsjkxavjshv',
     saveUninitialized: true,
     resave: false,
     store: new MongoStore({
-        url: "mongodb://localhost/store",
+        url: "mongodb+srv://enroutedb:mlab2020@enroute-84wi0.mongodb.net/Store",
         autoReconnect: true
     })
 }))
