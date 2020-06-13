@@ -49,7 +49,7 @@ router.post('/register', urlencodedParser, [
     }) => {
         return new Promise((resolve, reject) => {
             User.findOne({
-                username: req.body.username
+                phone: req.body.phone
             }, function (err, user) {
                 if (err) {
                     reject(new Error("Server Error"))
