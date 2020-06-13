@@ -58,7 +58,7 @@
                     <input type="text" name="lname" placeholder="Last Name" class="form-control" autocomplete="off" value="<%=data.lname%>">
 
                     <select name="gender" class="form-control">
-                        <option value="<%=data.gender || ' '%>" selected><%=data.gender || "Gender"%></option>
+                        <option value="<%=data.gender || "" %>" selected><%=data.gender || "Gender"%></option>
                         <option value="male">Male</option>
                         <option value="female">Female</option>
                     </select>
