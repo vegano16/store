@@ -49,7 +49,7 @@ let productSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    description: {
+    details: {
         type: String,
         required: true
     },
