@@ -111,7 +111,7 @@ router.post('/update/:id', urlencodedParser, [
 check('keywords').not().isEmpty().withMessage("Keywords are required"),
   check('country').not().isEmpty().withMessage("Country is required"),
   check('districts').not().isEmpty().withMessage("Districts are required"),
-  check('details').not().isEmpty().withMessage("Product details is required")
+  check('details').not().isEmpty().withMessage("Product details required")
 ], function (req, res) {
 
     const errors = validationResult(req);
@@ -174,7 +174,7 @@ router.post('/post', urlencodedParser, [
 check('keywords').not().isEmpty().withMessage("Keywords are required"),
 check('country').not().isEmpty().withMessage("Country is required"),
 check('districts').not().isEmpty().withMessage("Ditricts are required"),
-  check('details').not().isEmpty().withMessage("Product description is required")
+  check('details').not().isEmpty().withMessage("Product details required")
 ], function (req, res) {
 
     const errors = validationResult(req);
