@@ -34,7 +34,8 @@ nav {
 
 .page_nav a {
     text-decoration: none;
-    color: #F76C6C;
+    /* color: #F76C6C;*/
+    color: #FF4C4C;
 }
 
 .page_nav i {
