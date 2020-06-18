@@ -35,7 +35,8 @@ nav {
 .page_nav a {
     text-decoration: none;
     /* color: #F76C6C;*/
-    color: #FF4C4C;
+    /*color: #FF4C4C;*/
+    color: rgba(0, 0, 0, 0.7);
 }
 
 .page_nav i {
