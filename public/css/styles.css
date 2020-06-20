@@ -4,7 +4,8 @@ h1 {
 
 .header a {
     margin: 2px;
-    color: rgba(255, 255, 255, 1);
+    color: #FF4C4C;
+    /* color: rgba(255, 255, 255, 1);*/
     font-size: 20px;
 }
 

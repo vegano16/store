@@ -9,7 +9,7 @@ body {
 }
 
 header {
-    /*background-color: #0b0c10;*/
+    /*background-color: #0b0c10;#FF4C4C*/
 }
 
 .nav_and_content {
@@ -36,7 +36,7 @@ nav {
     text-decoration: none;
     /* color: #F76C6C;*/
     /*color: #FF4C4C;*/
-    color: rgba(0, 0, 0, 0.7);
+    color: rgba(65, 65, 65, 0.7);
 }
 
 .page_nav i {
