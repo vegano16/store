@@ -157,20 +157,19 @@ check('keywords').not().isEmpty().withMessage("Keywords are required"),
 });
 
 //Post Route
-router.get('/post', function (req, res) {
-    res.render('post', {
+router.get('/post-product', function (req, res) {
+    res.render('post-product', {
         errors: "",
         data: "",
-        nav: "Home > Products > Post"
+        nav: "Home > Products > Post-Product"
     });
 });
 
 //Post Product
-router.post('/post', urlencodedParser, [
+router.post('/post-product', urlencodedParser, [
   check('category').not().isEmpty().withMessage("Product category is required"),
   check('name').not().isEmpty().withMessage("Product name is required"),
   check('price').not().isEmpty().withMessage("Product price is required"),
-  check('color').not().isEmpty().withMessage("Product color is required"),
 check('keywords').not().isEmpty().withMessage("Keywords are required"),
 check('country').not().isEmpty().withMessage("Country is required"),
 check('districts').not().isEmpty().withMessage("Ditricts are required"),
@@ -194,10 +193,10 @@ check('districts').not().isEmpty().withMessage("Ditricts are required"),
             districts: req.body.districts,
             details: req.body.details
         }
-        res.render('post', {
+        res.render('post-product', {
             errors: errors.array(),
             data: data,
-            nav: "Home > Products > Post"
+            nav: "Home > Products > Post-Product"
         });
         return;
     } else {

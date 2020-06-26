@@ -23,7 +23,7 @@ let productSchema = mongoose.Schema({
     },
     color: {
         type: String,
-        required: true
+        required: false
     },
     size: {
         type: String,
@@ -39,11 +39,11 @@ let productSchema = mongoose.Schema({
     },
     country: {
         type: String,
-        required: true
+        required: false
     },
     districts: {
         type: Array,
-        required: true
+        required: false
     },
     productId: {
         type: String,
