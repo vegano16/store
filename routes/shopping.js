@@ -107,10 +107,7 @@ router.post('/update/:id', urlencodedParser, [
   check('category').not().isEmpty().withMessage("Product category is required"),
   check('name').not().isEmpty().withMessage("Product name is required"),
   check('price').not().isEmpty().withMessage("Product price is required"),
-  check('color').not().isEmpty().withMessage("Product color is required"),
 check('keywords').not().isEmpty().withMessage("Keywords are required"),
-  check('country').not().isEmpty().withMessage("Country is required"),
-  check('districts').not().isEmpty().withMessage("Districts are required"),
   check('details').not().isEmpty().withMessage("Product details required")
 ], function (req, res) {
 
@@ -171,8 +168,6 @@ router.post('/post-product', urlencodedParser, [
   check('name').not().isEmpty().withMessage("Product name is required"),
   check('price').not().isEmpty().withMessage("Product price is required"),
 check('keywords').not().isEmpty().withMessage("Keywords are required"),
-check('country').not().isEmpty().withMessage("Country is required"),
-check('districts').not().isEmpty().withMessage("Ditricts are required"),
   check('details').not().isEmpty().withMessage("Product details required")
 ], function (req, res) {
 
